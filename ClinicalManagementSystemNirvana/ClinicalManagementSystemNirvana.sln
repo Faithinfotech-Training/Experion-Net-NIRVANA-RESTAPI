@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32106.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClinicalManagementSystemNirvana", "ClinicalManagementSystemNirvana.csproj", "{DC065AE6-D88F-4673-9CFA-242A2AA35ED4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DC065AE6-D88F-4673-9CFA-242A2AA35ED4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC065AE6-D88F-4673-9CFA-242A2AA35ED4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC065AE6-D88F-4673-9CFA-242A2AA35ED4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC065AE6-D88F-4673-9CFA-242A2AA35ED4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D8DF26F1-F80B-4249-8778-D855E4165861}
+	EndGlobalSection
+EndGlobal
