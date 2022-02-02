@@ -83,7 +83,7 @@ namespace ClinicalManagementSystemNirvana.Repository
         }
         #endregion
         #region medviewmodel
-        public async Task<List<MedPrescriptionsviewmodel>> GetAllPrescription()
+        public async Task<List<PrescriptionsViewModel>> GetAllPrescription()
         {
             if (_context != null)
             {
@@ -92,7 +92,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                               from r in _context.Roles
                               from m in _context.MedPrescriptions
                               where m.PatientId == p.PatientId
-                              select new MedPrescriptionsviewmodel
+                              select new PrescriptionsViewModel
                               {
                                   PrescriptionId=m.PrescriptionId,
                                   PrescriptionDate=m.PrescriptionDate,

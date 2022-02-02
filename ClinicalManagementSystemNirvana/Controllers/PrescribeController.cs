@@ -21,6 +21,32 @@ namespace ClinicalManagementSystemNirvana.Controllers
             _medlabRepository = medlabRepository;
         }
 
+        //All Prescriptions
+        #region Get All Prescriptions
+        [HttpGet]
+        [Route("GetPrescriptions")]
+        public async Task<IActionResult> GetPrescription()
+        {
+            try
+            {
+                var presc = await _medlabRepository.GetPrescription();
+                if (presc == null)
+                {
+                    //return Ok("Ok Api 1");
+                    return NotFound();
+                }
+                //return Ok("Ok Api 2");
+                return Ok(presc);
+            }
+            catch (Exception)
+            {
+                //return Ok("Ok Api 3");
+                return BadRequest();
+            }
+        }
+        #endregion
+
+        //Medicine Prescribe
         #region Medicine Prescription
         [HttpPost]
         [Route("medicine")]
@@ -50,6 +76,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #endregion
 
+        //LabTest Prescribe
         #region Lab Test Prescription
         [HttpPost]
         [Route("labtest")]

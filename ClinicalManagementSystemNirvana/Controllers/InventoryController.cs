@@ -22,6 +22,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
             _inventory = inventory;
         }
 
+        //All Medicines and Labtests
         #region Get All Medicines and Labtests
         [HttpGet]
         [Route("getallmedicines")]
@@ -38,6 +39,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #endregion
 
+        //Add Medicines and Labtests
         #region Add Medicines and Labtests
         [HttpPost]
         [Route("medicine")]
@@ -94,6 +96,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #endregion
 
+        //Update Medicines and Labtests
         #region Update Medicine and Labtests
         [HttpPut]
         [Route("medicine")]
@@ -136,6 +139,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #endregion
 
+        //Find Medicines and Labtests
         #region Find Medicine and LabTests
         [HttpGet("{id}")]
         [Route("medicine")]
@@ -176,6 +180,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #endregion
 
+        //Delete Medicines and Labtests
         #region Delete Medicine and Labtests
         [HttpDelete("{id}")]
         [Route("medicine")]
