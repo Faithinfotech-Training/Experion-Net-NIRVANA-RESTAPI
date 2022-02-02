@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Final Project\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj": {}
+    "E:\\Final Project\\Git Repo\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj": {}
   },
   "projects": {
-    "E:\\Final Project\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj": {
+    "E:\\Final Project\\Git Repo\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Final Project\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj",
+        "projectUniqueName": "E:\\Final Project\\Git Repo\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj",
         "projectName": "ClinicalManagementSystemNirvana",
-        "projectPath": "E:\\Final Project\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj",
+        "projectPath": "E:\\Final Project\\Git Repo\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj",
         "packagesPath": "C:\\Users\\bidhu.m\\.nuget\\packages\\",
-        "outputPath": "E:\\Final Project\\ClinicalManagementSystemNirvana\\obj\\",
+        "outputPath": "E:\\Final Project\\Git Repo\\ClinicalManagementSystemNirvana\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\bidhu.m\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -40,6 +40,18 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
+            "Microsoft.AspNet.WebApi.Cors": {
+              "target": "Package",
+              "version": "[5.2.7, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[3.1.0, )"
+            },
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.1.1, )"
+            },
             "Microsoft.EntityFrameworkCore.SqlServer": {
               "target": "Package",
               "version": "[3.1.0, )"
