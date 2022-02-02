@@ -34,7 +34,7 @@ namespace ClinicalManagementSystemNirvana.Repository
         #endregion
 
         # region GetDoctorAndAppointments
-        public async Task<List<AppointmentViewModel>> GetAllDoctorAndAppointments()
+        public async Task<List<Appointmentviewmodel>> GetAllDoctorAndAppointments()
         {
             if (_context != null)
             //linq
@@ -43,7 +43,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                               from d in _context.Doctors
                               from p in _context.Patients
                               where a.DoctorId == d.DoctorId
-                              select new AppointmentViewModel
+                              select new Appointmentviewmodel
                               {
                                   AppointmentId = a.AppointmentId,
                                   TokenNo = a.TokenNo,
