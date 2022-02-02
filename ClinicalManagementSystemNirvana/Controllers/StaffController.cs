@@ -31,6 +31,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
 
         #region Add staff
         [HttpPost]
+        [Route("addstaff")]
         public async Task<IActionResult> AddStaff([FromBody] Staffs staffs)
         {
             //check validation of body
@@ -135,6 +136,27 @@ namespace ClinicalManagementSystemNirvana.Controllers
                     return NotFound();
                 }
                 return Ok(result);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        #endregion
+
+        #region GetAll Post ViewModel
+        [HttpGet]
+        [Route("GetStaffsAll")]
+        public async Task<IActionResult> GetAllStaff()
+        {
+            try
+            {
+                var posts = await _staffRepository.GetAllStaff();
+                if (posts == null)
+                {
+                    return NotFound();
+                }
+                return Ok(posts);
             }
             catch (Exception)
             {

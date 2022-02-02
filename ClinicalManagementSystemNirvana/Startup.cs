@@ -38,6 +38,10 @@ namespace ClinicalManagementSystemNirvana
             db.UseSqlServer(Configuration.GetConnectionString("CMSConnectionDb")));
             services.AddScoped<IPatient, PatientRepository>();
 
+            //enable cors
+            services.AddCors();
+            services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+
             services.AddControllers().AddNewtonsoftJson(
                 options =>
                 {

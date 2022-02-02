@@ -116,7 +116,9 @@ namespace ClinicalManagementSystemNirvana.Repository
             return null;
         }
         #endregion
+
         
+
         #region update patient
         public async Task UpdatePatient(Patients patients)
         {
@@ -127,6 +129,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                 await _context.SaveChangesAsync();
             }
         }
+        
         #endregion
     }
 }

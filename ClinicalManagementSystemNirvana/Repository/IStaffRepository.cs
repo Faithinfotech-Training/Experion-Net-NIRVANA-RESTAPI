@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ClinicalManagementSystemNirvana.Models;
+using ClinicalManagementSystemNirvana.View_Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ClinicalManagementSystemNirvana.Repository
@@ -11,7 +12,7 @@ namespace ClinicalManagementSystemNirvana.Repository
     {
         //Get All Staff  ----SELECT ----RETRIEVE
         // All data should be 
-        Task<List<Staffs>> GetAllstaff(); //ASynchronous
+        Task<List<Staffs>> GetAllstaff(); 
 
         //Add an employee ----INSERT ----CREATE
         Task<int> AddStaff(Staffs staffs);
@@ -27,5 +28,8 @@ namespace ClinicalManagementSystemNirvana.Repository
 
         //Search staff using UserName and Password
         Task<IEnumerable<Staffs>> GetStaffByNameandPassword(string name, string password);
+
+        //Get all Post ---ViewModel
+        Task<List<StaffViewModel>> GetAllStaff();
     }
 }

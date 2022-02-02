@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ClinicalManagementSystemNirvana.Models;
+using ClinicalManagementSystemNirvana.View_Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -108,6 +109,34 @@ namespace ClinicalManagementSystemNirvana.Repository
                 result = result.Where(e => e.StaffPassword.Contains(password));
             }
             return await result.ToListAsync();
+        }
+        #endregion
+
+        #region Get Staff ViewModel
+        public async Task<List<StaffViewModel>> GetAllStaff()
+        {
+            if (_context != null)
+            {
+                //LINQ
+                //join post and category
+                return await(from p in _context.Staffs
+                             from c in _context.Roles
+                             where p.RoleId == c.RoleId
+                             select new StaffViewModel
+                             {
+                                 StaffId = p.StaffId,
+                                 StaffName = p.StaffName,
+                                 StaffIsActive = p.StaffIsActive,
+                                 StaffAddr = p.StaffAddr,
+                                 StaffDob = p.StaffDob,
+                                 Gender = p.Gender,
+                                 Phone = p.Phone,
+                                 RoleId = c.RoleId,
+                                 RoleName = c.RoleName
+
+                             }).ToListAsync();
+            }
+            return null;
         }
         #endregion
     }
