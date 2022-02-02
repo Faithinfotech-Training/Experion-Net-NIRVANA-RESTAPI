@@ -8,6 +8,7 @@ namespace ClinicalManagementSystemNirvana.Models
         public Patients()
         {
             Appointments = new HashSet<Appointments>();
+            MedPrescriptions = new HashSet<MedPrescriptions>();
         }
 
         public int PatientId { get; set; }
@@ -18,5 +19,6 @@ namespace ClinicalManagementSystemNirvana.Models
         public string BloodGroup { get; set; }
 
         public virtual ICollection<Appointments> Appointments { get; set; }
+        public virtual ICollection<MedPrescriptions> MedPrescriptions { get; set; }
     }
 }

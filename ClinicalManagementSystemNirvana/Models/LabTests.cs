@@ -11,6 +11,7 @@ namespace ClinicalManagementSystemNirvana.Models
         }
 
         public int LabTestId { get; set; }
+        public string TestName { get; set; }
         public decimal TestNormalRange { get; set; }
         public string TestDesc { get; set; }
         public int? TestPrice { get; set; }

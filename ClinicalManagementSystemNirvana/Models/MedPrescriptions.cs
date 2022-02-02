@@ -13,9 +13,11 @@ namespace ClinicalManagementSystemNirvana.Models
 
         public int PrescriptionId { get; set; }
         public DateTime? PrescriptionDate { get; set; }
+        public int? PatientId { get; set; }
         public int? DoctorId { get; set; }
 
         public virtual Doctors Doctor { get; set; }
+        public virtual Patients Patient { get; set; }
         public virtual ICollection<MedicineBilling> MedicineBilling { get; set; }
         public virtual ICollection<Medicines> Medicines { get; set; }
     }

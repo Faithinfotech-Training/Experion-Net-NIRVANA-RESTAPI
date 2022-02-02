@@ -6,6 +6,7 @@ namespace ClinicalManagementSystemNirvana.Models
     public partial class Tests
     {
         public int TestId { get; set; }
+        public int TestResValue { get; set; }
         public int? ReportId { get; set; }
         public int? LabTestId { get; set; }
 
