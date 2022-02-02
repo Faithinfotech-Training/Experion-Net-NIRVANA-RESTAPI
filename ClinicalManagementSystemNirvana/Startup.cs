@@ -1,4 +1,5 @@
 using ClinicalManagementSystemNirvana.Models;
+using ClinicalManagementSystemNirvana.Repository;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,6 +36,9 @@ namespace ClinicalManagementSystemNirvana
 
             services.AddDbContext<CMSDBContext>(db =>
             db.UseSqlServer(Configuration.GetConnectionString("CMSConnectionDb")));
+
+            //Add public dependency injection for CAtegory Repository
+            services.AddScoped<IStaffRepository, StaffRepository>();
 
             services.AddControllers().AddNewtonsoftJson(
                 options =>

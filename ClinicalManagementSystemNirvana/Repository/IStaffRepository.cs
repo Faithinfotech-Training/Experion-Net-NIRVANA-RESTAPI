@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ClinicalManagementSystemNirvana.Models;
+using ClinicalManagementSystemNirvana.View_Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ClinicalManagementSystemNirvana.Repository
@@ -27,5 +28,8 @@ namespace ClinicalManagementSystemNirvana.Repository
 
         //Search staff using UserName and Password
         Task<IEnumerable<Staffs>> GetStaffByNameandPassword(string name, string password);
+
+        //Get all Post ---ViewModel
+        Task<List<StaffViewModel>> GetAllStaff();
     }
 }
