@@ -12,7 +12,7 @@ namespace ClinicalManagementSystemNirvana.Repository
     {
         //Get All Staff  ----SELECT ----RETRIEVE
         // All data should be 
-        Task<List<Staffs>> GetAllstaff(); //ASynchronous
+        Task<List<Staffs>> GetAllstaff(); 
 
         //Add an employee ----INSERT ----CREATE
         Task<int> AddStaff(Staffs staffs);
