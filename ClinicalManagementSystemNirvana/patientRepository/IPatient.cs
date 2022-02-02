@@ -22,7 +22,7 @@ namespace ClinicalManagementSystemNirvana.Repository
         //viewmodel appointment
         Task<List<Appointmentviewmodel>> GetAllAppointment();
         //viewmodel medpres
-        Task<List<PrescriptionsViewModel>> GetAllPrescription();
+        Task<List<MedPrescriptionsviewmodel>> GetAllPrescription();
 
     }
 }
