@@ -41,6 +41,7 @@ namespace ClinicalManagementSystemNirvana
             //enable cors
             services.AddCors();
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+            services.AddScoped<IMedInventory, MedInventoryRepository>();
 
             services.AddControllers().AddNewtonsoftJson(
                 options =>
