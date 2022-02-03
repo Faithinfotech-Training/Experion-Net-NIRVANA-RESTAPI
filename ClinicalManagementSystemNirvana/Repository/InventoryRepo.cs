@@ -18,18 +18,9 @@ namespace ClinicalManagementSystemNirvana.Repository
             _context = context;
         }
 
-        //ADD MEDICINE and LAB TESTS
-        #region ADD MEDICINE and LAB TESTS
-        public async Task<int> AddMedicine(MedicineInventory medInv)
-        {
-            if (_context != null)
-            {
-                await _context.MedicineInventory.AddAsync(medInv);
-                await _context.SaveChangesAsync();
-                return medInv.MedInvId;
-            }
-            return 0;
-        }
+        //ADD  LAB TESTS
+        #region ADD LAB TESTS
+       
         public async Task<int> AddLabTests(LabTests labId)
         {
             if (_context != null)
@@ -42,28 +33,9 @@ namespace ClinicalManagementSystemNirvana.Repository
         }
         #endregion
 
-        //DELETE MEDICINE and LAB TESTS
-        #region DELETE MEDICINE and LAB TESTS
-        public async Task<int> DeleteMedicine(int? id)
-        {
-            int result = 0;
-            if (_context != null)
-            {
-                var medc = await _context.MedicineInventory.FirstOrDefaultAsync(med => med.MedInvId == id);
-
-                //check condition
-                if (medc != null)
-                {
-                    _context.MedicineInventory.Remove(medc);
-
-                    //commit the trancsaction
-                    result = await _context.SaveChangesAsync();
-                }
-
-                return result;
-            }
-            return result;
-        }
+        //DELETE  LAB TESTS
+        #region DELETE LAB TESTS
+        
         public async Task<int> DeleteLabTests(int? id)
         {
             int result = 0;
@@ -87,16 +59,9 @@ namespace ClinicalManagementSystemNirvana.Repository
 
         #endregion
 
-        //GET ALL MEDICINE and LAB TESTS
-        #region GET ALL MEDICINE and LAB TESTS
-        public async Task<List<MedicineInventory>> GetAllMedicines()
-        {
-            if (_context != null)
-            {
-                return await _context.MedicineInventory.ToListAsync();
-            }
-            return null;
-        }
+        //GET ALL  LAB TESTS
+        #region GET ALL LAB TESTS
+       
         public async Task<List<LabTests>> GetAllLabTests()
         {
             if (_context != null)
@@ -107,17 +72,9 @@ namespace ClinicalManagementSystemNirvana.Repository
         }
         #endregion
 
-        //GET MEDICINE and LAB TESTS BY ID
-        #region GET MEDICINE and LAB TESTS BY ID
-        public async Task<ActionResult<MedicineInventory>> GetMedicineId(int id)
-        {
-            if (_context != null)
-            {
-                var medc = await _context.MedicineInventory.FindAsync(id);// concentrating on primary key
-                return medc;
-            }
-            return null;
-        }
+        //GET  LAB TESTS BY ID
+        #region GET LAB TESTS BY ID
+      
         public async Task<ActionResult<LabTests>> GetLabTestsById(int id)
         {
             if (_context != null)
@@ -129,17 +86,9 @@ namespace ClinicalManagementSystemNirvana.Repository
         }
         #endregion
 
-        //UPDATE MEDICINE and LAB TESTS
-        #region UPDATE MEDICINE and LAB TESTS
-        public async Task UpdateMedicine(MedicineInventory medInv)
-        {
-            if (_context != null)
-            {
-                _context.Entry(medInv).State = EntityState.Modified;
-                _context.MedicineInventory.Update(medInv);
-                await _context.SaveChangesAsync(); //Commit the transaction
-            }
-        }
+        //UPDATE  LAB TESTS
+        #region UPDATE  LAB TESTS
+       
         public async Task UpdateLabTests(LabTests labId)
         {
             if (_context != null)

@@ -11,43 +11,40 @@ namespace ClinicalManagementSystemNirvana.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class InventoryController : ControllerBase
+    public class MedInventoryController : ControllerBase
     {
         //Data fields
-        private readonly IInventory _inventory;
+        private readonly IMedInventory _inventoryRepository;
 
         //Constructor injection
-        public InventoryController(IInventory inventory)
+        public MedInventoryController(IMedInventory inventoryRepository)
         {
-            _inventory = inventory;
+            _inventoryRepository = inventoryRepository;
         }
 
-        //All  Labtests
-        #region Get All  Labtests
+        #region getallmedicines
         [HttpGet]
-        [Route("getalllabtests")]
-        public async Task<ActionResult<IEnumerable<LabTests>>> GetAllLabTests()
+        [Route("get")]
+        public async Task<ActionResult<IEnumerable<MedicineInventory>>> GetAllMedicines()
         {
-            return await _inventory.GetAllLabTests();
+            return await _inventoryRepository.GetAllMedicines();
         }
         #endregion
 
-        //Add Labtests
-        #region Add  Labtests
-        
+        #region Add Medicines
         [HttpPost]
-        [Route("labtest")]
-        public async Task<IActionResult> AddLabTests([FromBody] LabTests labInv)
+        [Route("medicine")]
+        public async Task<IActionResult> AddMedicine([FromBody] MedicineInventory medInventory)
         {
             //check validation of body
             if (ModelState.IsValid)
             {
                 try
                 {
-                    var labId = await _inventory.AddLabTests(labInv);
-                    if (labId > 0)
+                    var medId = await _inventoryRepository.AddMedicine(medInventory);
+                    if (medId > 0)
                     {
-                        return Ok(labId);
+                        return Ok(medId);
                     }
                     else
                     {
@@ -63,19 +60,18 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #endregion
 
-        //Update  Labtests
-        #region Update Labtests
-        
+
+        #region Update Medicine 
         [HttpPut]
-        [Route("labtest")]
-        public async Task<IActionResult> UpdateLabTests([FromBody] LabTests labInv)
+        [Route("medicine")]
+        public async Task<IActionResult> UpdateMedicine([FromBody] MedicineInventory medInv)
         {
             //check validation of body
             if (ModelState.IsValid)
             {
                 try
                 {
-                    await _inventory.UpdateLabTests(labInv);
+                    await _inventoryRepository.UpdateMedicine(medInv);
                     return Ok();
                 }
                 catch (Exception)
@@ -87,20 +83,19 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #endregion
 
-        //Find Labtests
-        #region Find  LabTests
-        
-      [HttpGet("labtest/{id}")]
-        public async Task<ActionResult<LabTests>> GetLabTestsById(int id)
+
+        #region Find Medicine
+        [HttpGet("medicine/{id}")]
+        public async Task<ActionResult<MedicineInventory>> GetMedicineId(int id)
         {
             try
             {
-                var labt = await _inventory.GetLabTestsById(id);
-                if (labt == null)
+                var medc = await _inventoryRepository.GetMedicineId(id);
+                if (medc == null)
                 {
                     return NotFound();
                 }
-                return labt;
+                return medc;
             }
             catch (Exception)
             {
@@ -109,11 +104,10 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #endregion
 
-        //Delete  Labtests
-        #region Delete Labtests
-       
-        [HttpDelete("labtest/{id}")]
-        public async Task<IActionResult> DeleteLabTests(int? id)
+
+        #region Delete Medicine
+        [HttpDelete("medicine/{id}")]
+        public async Task<IActionResult> DeleteMedicine(int? id)
         {
             int result = 0;
             if (id == null)
@@ -122,7 +116,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
             }
             try
             {
-                result = await _inventory.DeleteLabTests(id);
+                result = await _inventoryRepository.DeleteMedicine(id);
                 if (result == 0)
                 {
                     return NotFound();
@@ -135,6 +129,5 @@ namespace ClinicalManagementSystemNirvana.Controllers
             }
         }
         #endregion
-
     }
 }

@@ -101,7 +101,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
 
         #region Delete Staff
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteStaff(int id)
+        public async Task<IActionResult> DeleteStaff(int? id)
         {
             int result = 0;
             if (id == null)

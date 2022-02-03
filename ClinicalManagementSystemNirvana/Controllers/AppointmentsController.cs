@@ -67,5 +67,29 @@ namespace ClinicalManagementSystemNirvana.Controllers
             }
         }
         #endregion
+
+
+        //#region getdoctor
+        //[HttpGet]
+        //[Route("getdoctor")]
+        //public async Task<IActionResult> Getdoctor()
+        //{
+        //    try
+        //    {
+        //        var appointments = await _appointmentRepository.Getdoctor();
+
+
+        //        if (appointments == null)
+        //        {
+        //            return NotFound();
+        //        }
+        //        return Ok(appointments);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return BadRequest();
+        //    }
+        //}
+        //#endregion
     }
 }

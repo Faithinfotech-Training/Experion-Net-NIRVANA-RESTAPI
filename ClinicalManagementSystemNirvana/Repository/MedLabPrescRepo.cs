@@ -25,27 +25,28 @@ namespace ClinicalManagementSystemNirvana.Repository
             {
                 return await (
                     from a in _context.Appointments
+                    from p in _context.Patients
+                    from s in _context.Staffs
+                    where a.DoctorId == s.StaffId
                     select new PrescriptionsViewModel
                     {
                         PrescriptionId = a.AppointmentId,
                         PrescriptionDate = a.DateOfAppointment,
-                        PatientName = (from p in _context.Patients
-                                       where a.PatientId == p.PatientId
-                                       select p.PatientName).ToString(),
-                        DoctorName = (from s in _context.Staffs
-                                      where a.DoctorId == s.StaffId
-                                      select s.StaffName).ToString(),
+                        PatientName = p.PatientName,
+                        DoctorName = s.StaffName,
                         Medicines = (from pre in _context.MedPrescriptions
                                      join m in _context.Medicines
                                      on pre.PrescriptionId equals m.PresccriptionId
                                      join inv in _context.MedicineInventory
                                      on m.MedInvId equals inv.MedInvId
+                                     where p.PatientId==pre.PatientId
                                      select inv.MedicineName).ToList(),
                         LabTests = (from lre in _context.LabReport
                                     join t in _context.Tests
                                     on lre.ReportId equals t.ReportId
                                     join inv in _context.LabTests
                                     on t.LabTestId equals inv.LabTestId
+                                    where lre.AppointmentId == a.AppointmentId
                                     select inv.TestName).ToList()
                     }).ToListAsync();
             }
