@@ -39,7 +39,12 @@ namespace ClinicalManagementSystemNirvana
 
             //enable cors
             services.AddCors();
+
+            //Add public dependency injection for StaffRepository
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+
+            //Add public dependency injection for StaffRepository
+            services.AddScoped<IStaffRepository, StaffRepository>();
 
             services.AddControllers().AddNewtonsoftJson(
                 options =>
