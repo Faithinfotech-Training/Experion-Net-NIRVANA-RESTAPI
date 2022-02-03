@@ -141,8 +141,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
 
         //Find Medicines and Labtests
         #region Find Medicine and LabTests
-        [HttpGet("{id}")]
-        [Route("medicine")]
+        [HttpGet("medicine/{id}")]
         public async Task<ActionResult<MedicineInventory>> GetMedicineId(int id)
         {
             try
@@ -160,8 +159,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
             }
         }
 
-        [HttpGet("{id}")]
-        [Route("labtest")]
+        [HttpGet("labtest/{id}")]
         public async Task<ActionResult<LabTests>> GetLabTestsById(int id)
         {
             try
@@ -182,8 +180,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
 
         //Delete Medicines and Labtests
         #region Delete Medicine and Labtests
-        [HttpDelete("{id}")]
-        [Route("medicine")]
+        [HttpDelete("medicine/{id}")]
         public async Task<IActionResult> DeleteMedicine(int? id)
         {
             int result = 0;
@@ -206,8 +203,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
             }
         }
 
-        [HttpDelete("{id}")]
-        [Route("labtest")]
+        [HttpDelete("labtest/{id}")]
         public async Task<IActionResult> DeleteLabTests(int? id)
         {
             int result = 0;
