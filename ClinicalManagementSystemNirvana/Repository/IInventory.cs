@@ -10,24 +10,24 @@ namespace ClinicalManagementSystemNirvana.Repository
     public interface IInventory
     {
 
-        //Get All Medicine and Lab Tests  ----SELECT ----RETRIEVE
-        Task<List<MedicineInventory>> GetAllMedicines();
+        //Get All Lab Tests  ----SELECT ----RETRIEVE
+        
         Task<List<LabTests>> GetAllLabTests();
 
-        //Add Medicine and Lab Tests ----INSERT ----CREATE
-        Task<int> AddMedicine(MedicineInventory medInv);
+        //Add Lab Tests ----INSERT ----CREATE
+        
         Task<int> AddLabTests(LabTests labId);
 
-        //update Medicine and Lab Tests ----UPDATE ---UPDATE
-        Task UpdateMedicine(MedicineInventory medInv);
+        //update  Lab Tests ----UPDATE ---UPDATE
+        
         Task UpdateLabTests(LabTests labId);
 
-        //Find Medicine and Lab Tests by  Id
-        Task<ActionResult<MedicineInventory>> GetMedicineId(int id);
+        //Find Lab Tests by  Id
+      
         Task<ActionResult<LabTests>> GetLabTestsById(int id);
 
-        //Delete a Medicine and Lab Tests
-        Task<int> DeleteMedicine(int? id);
+        //Delete a Lab Tests
+       
         Task<int> DeleteLabTests(int? id);
       
     }
