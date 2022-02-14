@@ -27,7 +27,7 @@ namespace ClinicalManagementSystemNirvana.Models
         public virtual DbSet<Roles> Roles { get; set; }
         public virtual DbSet<Staffs> Staffs { get; set; }
         public virtual DbSet<Tests> Tests { get; set; }
-
+/*
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
@@ -36,6 +36,7 @@ namespace ClinicalManagementSystemNirvana.Models
                 optionsBuilder.UseSqlServer("Data Source=ABHINAVJAIJU\\SQLEXPRESS; Initial Catalog= CMSDB; Integrated security=True");
             }
         }
+*/
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

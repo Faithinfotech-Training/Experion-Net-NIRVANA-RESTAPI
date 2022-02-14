@@ -33,9 +33,9 @@ namespace ClinicalManagementSystemNirvana
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
             services.AddDbContext<CMSDBContext>(db =>
             db.UseSqlServer(Configuration.GetConnectionString("CMSConnectionDb")));
+            
             services.AddScoped<IPatient, PatientRepository>();
 
             //enable cors
@@ -47,6 +47,25 @@ namespace ClinicalManagementSystemNirvana
 
             //Add public dependency injection for StaffRepository
             services.AddScoped<IStaffRepository, StaffRepository>();
+            services.AddScoped<IRoleRepository, RolesRepository>();
+
+            //Register JWT authentication Scheme here
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        //Configure the authentication scheme with JWT bearer options
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidateLifetime = true,
+                        ValidIssuer = Configuration["Jwt:Issuer"],
+                        ValidAudience = Configuration["Jwt:Issuer"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                    };
+                }
+                );
 
             services.AddControllers().AddNewtonsoftJson(
                 options =>
@@ -68,7 +87,15 @@ namespace ClinicalManagementSystemNirvana
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-             if (env.IsDevelopment())
+            //Cors
+            app.UseCors(options =>
+                options.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+
+                );
+
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
