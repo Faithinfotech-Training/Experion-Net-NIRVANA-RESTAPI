@@ -41,6 +41,9 @@ namespace ClinicalManagementSystemNirvana
             //enable cors
             services.AddCors();
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+            services.AddScoped<IInventory, InventoryRepo>();
+            services.AddScoped<IMedLabPresc, MedLabPrescRepo>();
+            services.AddScoped<IStaffRepository, StaffRepository>();
 
             services.AddControllers().AddNewtonsoftJson(
                 options =>
@@ -57,12 +60,41 @@ namespace ClinicalManagementSystemNirvana
                     options.SerializerSettings.ReferenceLoopHandling =
                     Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
+
+            //Register JWT authentication schema
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            .AddJwtBearer(options =>
+            {
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    //Configure authentication scheme with jwt bearer options
+                    ValidateIssuer = true,
+                    ValidateAudience = true,
+                    ValidateLifetime = true,
+                    ValidateIssuerSigningKey = true,
+                    ValidIssuer = Configuration["Jwt:Issuer"],
+                    ValidAudience = Configuration["Jwt:Issuer"],
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                };
+            });
+            services.AddMvc();
+
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-             if (env.IsDevelopment())
+
+            //add cors
+            app.UseCors(options =>
+                options.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                //.AllowCredentials()
+                );
+
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
