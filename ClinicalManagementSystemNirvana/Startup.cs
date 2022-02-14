@@ -42,6 +42,22 @@ namespace ClinicalManagementSystemNirvana
             services.AddCors();
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
             services.AddScoped<IMedInventory, MedInventoryRepository>();
+            services.AddScoped<IStaffRepository, StaffRepository>();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+             .AddJwtBearer(options =>
+             {
+                 options.TokenValidationParameters = new TokenValidationParameters
+                 {
+                      //configure the authenticatin scheme with jwt bearer options
+                      ValidateIssuer = true,
+                     ValidateAudience = true,
+                     ValidateIssuerSigningKey = true,
+                     ValidateLifetime = true,
+                     ValidIssuer = Configuration["Jwt:Issuer"],
+                     ValidAudience = Configuration["Jwt:Issuer"],
+                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                 };
+             });
 
             services.AddControllers().AddNewtonsoftJson(
                 options =>
@@ -63,6 +79,13 @@ namespace ClinicalManagementSystemNirvana
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            //cors
+            app.UseCors(options =>
+            options.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            );
              if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
