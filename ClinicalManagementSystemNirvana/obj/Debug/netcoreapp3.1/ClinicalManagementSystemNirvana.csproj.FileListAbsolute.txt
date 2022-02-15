@@ -83,7 +83,6 @@ E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.
 E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
-E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.csproj.AssemblyReference.cache
 E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.GeneratedMSBuildEditorConfig.editorconfig
 E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.AssemblyInfoInputs.cache
 E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.AssemblyInfo.cs
@@ -97,3 +96,4 @@ E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.
 E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.dll
 E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.pdb
 E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.genruntimeconfig.cache
+E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.csproj.AssemblyReference.cache
