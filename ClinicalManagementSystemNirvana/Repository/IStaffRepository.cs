@@ -27,7 +27,9 @@ namespace ClinicalManagementSystemNirvana.Repository
         Task<int> DeleteStaff(int? id);
 
         //Search staff using UserName and Password
-        Task<IEnumerable<Staffs>> GetStaffByNameandPassword(string name, string password);
+
+        Task<Staffs> GetStaffByUsernamePassword(string un, string pw);
+        // Task<IEnumerable<Staffs>> GetStaffByNameandPassword(string name, string password);
 
         //Get all Post ---ViewModel
         Task<List<StaffViewModel>> GetAllStaff();

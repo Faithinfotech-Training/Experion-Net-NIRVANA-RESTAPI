@@ -1,11 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using ClinicalManagementSystemNirvana.Models;
 using ClinicalManagementSystemNirvana.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 
 namespace ClinicalManagementSystemNirvana.Controllers
 {
@@ -15,11 +20,13 @@ namespace ClinicalManagementSystemNirvana.Controllers
     {
         //data fields
         private readonly IStaffRepository _staffRepository;
+        private readonly IConfiguration _config;
 
         //constructor injection
-        public StaffController(IStaffRepository staffRepository)
+        public StaffController(IConfiguration config,IStaffRepository staffRepository)
         {
             _staffRepository = staffRepository;
+            _config = config;
         }
         #region Get All Staff
         [HttpGet]
@@ -124,24 +131,68 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #endregion
 
-        #region Search Staff using username and password
-        [HttpGet("{search}/{name}&{password}")]
-        public async Task<ActionResult<IEnumerable<Staffs>>> GetStaffByNameandPassword(string name, string password)
+        //#region Search Staff using username and password
+        //[HttpGet("{search}/{name}&{password}")]
+        //public async Task<ActionResult<IEnumerable<Staffs>>> GetStaffByNameandPassword(string name, string password)
+        //{
+        //    try
+        //    {
+        //        var result = await _staffRepository.GetStaffByNameandPassword(name, password);
+        //        if (result == null)
+        //        {
+        //            return NotFound();
+        //        }
+        //        return Ok(result);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return BadRequest();
+        //    }
+        //}
+        //#endregion
+
+
+        #region  Get Staff By Username Password 
+        [HttpGet("{un}&{pw}")]
+        [AllowAnonymous]
+        
+
+        public async Task<IActionResult> GetStaffByUsernamePassword(string un, string pw)
         {
-            try
+            var securitykey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
+            //signing credential
+            var credentials = new SigningCredentials(securitykey, SecurityAlgorithms.HmacSha256);
+            //generate token
+            var token = new JwtSecurityToken(
+            _config["Jwt:Issuer"],
+            _config["Jwt:Issuer"],
+            expires: DateTime.Now.AddMinutes(20),
+            signingCredentials: credentials);
+            var response = Ok(new { token = ' ',Staffs= ' ' });
+            if (ModelState.IsValid)
             {
-                var result = await _staffRepository.GetStaffByNameandPassword(name, password);
-                if (result == null)
+                try
                 {
-                    return NotFound();
+                    var tokens = new JwtSecurityTokenHandler().WriteToken(token);
+                    var user = await _staffRepository.GetStaffByUsernamePassword(un, pw);
+                    response = Ok(new
+                    {
+                        token = tokens,
+                        Name = user.StaffName,
+                        RoleId = user.RoleId,
+
+                    });
+                    return response;
                 }
-                return Ok(result);
+                catch (Exception)
+                {
+                    return BadRequest();
+                }
             }
-            catch (Exception)
-            {
-                return BadRequest();
-            }
+            return BadRequest();
+
         }
+
         #endregion
 
         #region GetAll Post ViewModel
