@@ -31,6 +31,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #endregion
 
+        
         #region Add Medicines
         [HttpPost]
         [Route("medicine")]
