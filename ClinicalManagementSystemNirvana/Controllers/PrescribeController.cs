@@ -106,5 +106,30 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #endregion
 
+        #region Pharmacy Billing
+        [HttpGet]
+        [Route("GetMedBill")]
+        public async Task<IActionResult> GetPharmacyBilling()
+        {
+            try
+            {
+                var presc = await _medlabRepository.GetMedBill();
+                if (presc == null)
+                {
+                    //return Ok("Ok Api 1");
+                    return NotFound();
+                }
+                //return Ok("Ok Api 2");
+                return Ok(presc);
+            }
+            catch (Exception)
+            {
+                //return Ok("Ok Api 3");
+                return BadRequest();
+            }
+        }
+        #endregion
+
+
     }
 }

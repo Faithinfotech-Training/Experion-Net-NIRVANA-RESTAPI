@@ -16,7 +16,9 @@ namespace ClinicalManagementSystemNirvana.Repository
         Task<int> PrescribeLabTests(Tests test);
 
         //For Prescribing Medicines
-        Task<int> PrescribeMed(Medicines med);  
+        Task<int> PrescribeMed(Medicines med);
+
+        Task<List<PharmacistBillingViewModel>> GetMedBill();
 
     }
 }
