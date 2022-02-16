@@ -48,7 +48,7 @@ namespace ClinicalManagementSystemNirvana
            
             services.AddScoped<IInventory, InventoryRepo>();
             services.AddScoped<IMedLabPresc, MedLabPrescRepo>();
-            services.AddScoped<IStaffRepository, StaffRepository>();
+            services.AddScoped<IRoleRepository, RolesRepository>();
 
             services.AddControllers().AddNewtonsoftJson(
                 options =>
