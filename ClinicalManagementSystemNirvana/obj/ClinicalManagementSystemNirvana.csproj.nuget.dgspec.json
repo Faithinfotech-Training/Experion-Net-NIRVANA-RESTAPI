@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\clinicalManagementSystem\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj": {}
+    "C:\\Users\\sneha.salu\\source\\repos\\Experion-Net-NIRVANA-RESTAPI\\new\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj": {}
   },
   "projects": {
-    "D:\\clinicalManagementSystem\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj": {
+    "C:\\Users\\sneha.salu\\source\\repos\\Experion-Net-NIRVANA-RESTAPI\\new\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\clinicalManagementSystem\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj",
+        "projectUniqueName": "C:\\Users\\sneha.salu\\source\\repos\\Experion-Net-NIRVANA-RESTAPI\\new\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj",
         "projectName": "ClinicalManagementSystemNirvana",
-        "projectPath": "D:\\clinicalManagementSystem\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj",
-        "packagesPath": "C:\\Users\\sameena.f\\.nuget\\packages\\",
-        "outputPath": "D:\\clinicalManagementSystem\\ClinicalManagementSystemNirvana\\obj\\",
+        "projectPath": "C:\\Users\\sneha.salu\\source\\repos\\Experion-Net-NIRVANA-RESTAPI\\new\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj",
+        "packagesPath": "C:\\Users\\sneha.salu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sneha.salu\\source\\repos\\Experion-Net-NIRVANA-RESTAPI\\new\\ClinicalManagementSystemNirvana\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\sameena.f\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sneha.salu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
