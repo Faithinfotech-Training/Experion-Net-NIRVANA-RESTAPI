@@ -1,5 +1,6 @@
 ﻿using ClinicalManagementSystemNirvana.Models;
 using ClinicalManagementSystemNirvana.View_Model;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,8 @@ namespace ClinicalManagementSystemNirvana.Repository
         //Join doctorId and Appointments
         Task<List<Appointmentviewmodel>> GetAllDoctorAndAppointments();
 
-        //Task<List<Appointments>> Getdoctor();
+       
+       
 
 
 

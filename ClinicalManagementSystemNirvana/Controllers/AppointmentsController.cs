@@ -48,7 +48,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         #region  get all DoctorAndAppointments 
         //api/appointments/doctor
         [HttpGet]
-        [Route("tokencount")]
+        [Route("get")]
         public async Task<IActionResult> GetAllDoctorAndAppointments()
         {
             try
@@ -69,27 +69,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         #endregion
 
 
-        //#region getdoctor
-        //[HttpGet]
-        //[Route("getdoctor")]
-        //public async Task<IActionResult> Getdoctor()
-        //{
-        //    try
-        //    {
-        //        var appointments = await _appointmentRepository.Getdoctor();
-
-
-        //        if (appointments == null)
-        //        {
-        //            return NotFound();
-        //        }
-        //        return Ok(appointments);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
-        //#endregion
+       
+       
     }
 }
