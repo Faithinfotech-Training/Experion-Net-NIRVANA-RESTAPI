@@ -13,11 +13,20 @@ namespace ClinicalManagementSystemNirvana.Repository
         //data fields
         private readonly CMSDBContext _context;
 
-        //default constructor
-        //constructor based dependency injection
         public AppointmentRepository(CMSDBContext context)
         {
             _context = context;
+        }
+
+        public async Task<int> AddAppointment(Appointments appointments)
+        {
+            if (_context != null)
+            {
+                await _context.Appointments.AddAsync(appointments);
+                await _context.SaveChangesAsync();
+                return appointments.AppointmentId;
+            }
+            return 0;
         }
         #region get all Appointments
         public async Task<List<Appointments>> GetAllAppointments()
@@ -52,11 +61,29 @@ namespace ClinicalManagementSystemNirvana.Repository
                                   PatientId=p.PatientId,
                                   PatientName=p.PatientName
                                  
-
                               }
                              ).ToListAsync();
             }
             return null;
+        }
+
+        public async Task<List<Appointments>> GetAppointments()
+        {
+            if (_context != null)
+            {
+                return await _context.Appointments.ToListAsync();
+            }
+            return null;
+        }
+
+        public async Task UpdateApppointment(Appointments appointments)
+        {
+            if (_context != null)
+            {
+                _context.Entry(appointments).State = EntityState.Modified;
+                _context.Appointments.Update(appointments);
+                await _context.SaveChangesAsync();
+            }
         }
         #endregion
 

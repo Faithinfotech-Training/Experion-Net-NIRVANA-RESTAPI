@@ -9,13 +9,17 @@ namespace ClinicalManagementSystemNirvana.Repository
 {
      public interface IAppointmentRepository
     {
-        //get all post
+        //get all appointment
         Task<List<Appointments>> GetAllAppointments();
 
         //Join doctorId and Appointments
         Task<List<Appointmentviewmodel>> GetAllDoctorAndAppointments();
+        Task<int> AddAppointment(Appointments appointments);
+        //update Appointment
+        Task UpdateApppointment(Appointments appointments);
 
-        //Task<List<Appointments>> Getdoctor();
+        Task<List<Appointments>> GetAppointments();
+
 
 
 
