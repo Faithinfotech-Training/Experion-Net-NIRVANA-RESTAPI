@@ -2,10 +2,13 @@
   "ExpandedNodes": [
     "",
     "\\ClinicalManagementSystemNirvana",
+    "\\ClinicalManagementSystemNirvana\\bin",
     "\\ClinicalManagementSystemNirvana\\Controllers",
-    "\\ClinicalManagementSystemNirvana\\Repository",
-    "\\ClinicalManagementSystemNirvana\\View Model"
+    "\\ClinicalManagementSystemNirvana\\Controllers\\patientcontroller",
+    "\\ClinicalManagementSystemNirvana\\Models",
+    "\\ClinicalManagementSystemNirvana\\patientRepository",
+    "\\ClinicalManagementSystemNirvana\\Repository"
   ],
-  "SelectedNode": "\\ClinicalManagementSystemNirvana\\appsettings.json",
+  "SelectedNode": "\\ClinicalManagementSystemNirvana\\Models\\Patients.cs",
   "PreviewInSolutionExplorer": false
 }
