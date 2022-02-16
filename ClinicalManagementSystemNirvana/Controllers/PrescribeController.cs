@@ -130,6 +130,96 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #endregion
 
+        #region update lab Test
+        [HttpPut]
+        public async Task<IActionResult> UpdateLabTest([FromBody] Tests tests)
+        {
+            //check validation of body
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await _medlabRepository.UpdateLabTest(tests);
+                    return Ok();
+                }
+                catch (Exception)
+                {
+                    return BadRequest();
+                }
+            }
+            return BadRequest();
+        }
+        #endregion
+
+        #region Find a LabTest
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Tests>> GetLabTestById(int id)
+        {
+            try
+            {
+                var employee = await _medlabRepository.GetTestById(id);
+                if (employee == null)
+                {
+                    return NotFound();
+                }
+                return employee;
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        #endregion
+
+        #region Add LabReport 
+        [HttpPost]
+        public async Task<IActionResult> AddLabReport([FromBody] Tests tests)
+        {
+            //check validation of body
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var Id = await _medlabRepository.AddLabReport(tests);
+                    if (Id > 0)
+                    {
+                        return Ok(Id);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+                catch (Exception)
+                {
+                    return BadRequest();
+                }
+            }
+            return BadRequest();
+        }
+
+        #endregion
+
+        #region UpdateLabReport
+        [HttpPut]
+        public async Task<IActionResult> UpdateLabReport([FromBody] Tests tests)
+        {
+            //check validation of body
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await _medlabRepository.UpdateLabReport(tests);
+                    return Ok();
+                }
+                catch (Exception)
+                {
+                    return BadRequest();
+                }
+            }
+            return BadRequest();
+        }
+        #endregion
 
     }
 }

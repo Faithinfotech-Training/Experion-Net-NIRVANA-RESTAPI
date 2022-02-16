@@ -44,6 +44,7 @@ namespace ClinicalManagementSystemNirvana
             services.AddScoped<IStaffRepository, StaffRepository>();
             services.AddScoped<IInventory, InventoryRepo>();
             services.AddScoped<IMedLabPresc, MedLabPrescRepo>();
+            services.AddScoped<IRoleRepository, RolesRepository>();
             services.AddScoped<IStaffRepository, StaffRepository>();
             services.AddScoped<IRoleRepository, RolesRepository>();
             services.AddScoped<IDoctorRepository, DoctorRepository>();
