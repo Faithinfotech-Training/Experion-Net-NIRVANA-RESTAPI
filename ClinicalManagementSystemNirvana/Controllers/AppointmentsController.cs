@@ -1,4 +1,5 @@
-﻿using ClinicalManagementSystemNirvana.Repository;
+﻿using ClinicalManagementSystemNirvana.Models;
+using ClinicalManagementSystemNirvana.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -48,7 +49,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         #region  get all DoctorAndAppointments 
         //api/appointments/doctor
         [HttpGet]
-        [Route("tokencount")]
+        [Route("get")]
         public async Task<IActionResult> GetAllDoctorAndAppointments()
         {
             try
@@ -91,5 +92,59 @@ namespace ClinicalManagementSystemNirvana.Controllers
         //    }
         //}
         //#endregion
+        #region add patient
+        [HttpPost]
+        public async Task<IActionResult> AddAppointment([FromBody] Appointments appointments)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var id = await _appointmentRepository.AddAppointment(appointments);
+                    if (id > 0)
+                    {
+                        return Ok(id);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+                catch (Exception)
+                {
+                    return BadRequest();
+                }
+            }
+            return BadRequest();
+        }
+        #endregion
+        #region updateappointment
+        public async Task<IActionResult> UpdateAppointment([FromBody] Appointments appointments)
+        {
+            //check the validation of body
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await _appointmentRepository.UpdateApppointment(appointments);
+                    return Ok();
+                }
+                catch (Exception)
+                {
+                    return BadRequest();
+                }
+            }
+            return BadRequest();
+        }
+        #endregion
+        #region Get All appiontment
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Appointments>>> GetAppointments()
+        {
+            return await _appointmentRepository.GetAppointments();
+        }
+        #endregion
+
+
     }
 }

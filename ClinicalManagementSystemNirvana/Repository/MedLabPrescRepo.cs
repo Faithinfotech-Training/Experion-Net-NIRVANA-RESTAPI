@@ -1,5 +1,6 @@
 ﻿using ClinicalManagementSystemNirvana.Models;
 using ClinicalManagementSystemNirvana.View_Model;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -39,7 +40,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                                      on pre.PrescriptionId equals m.PresccriptionId
                                      join inv in _context.MedicineInventory
                                      on m.MedInvId equals inv.MedInvId
-                                     where p.PatientId==pre.PatientId
+                                     where p.PatientId == pre.PatientId
                                      select inv.MedicineName).ToList(),
                         LabTests = (from lre in _context.LabReport
                                     join t in _context.Tests
@@ -121,5 +122,71 @@ namespace ClinicalManagementSystemNirvana.Repository
         }
         #endregion
 
+        #region Pharmacist Bill
+
+        public async Task<List<PharmacistBillingViewModel>> GetMedBill()
+        {
+            if (_context != null)
+            {
+                return await (
+                    from a in _context.MedicineBilling
+                    join b in _context.Medicines
+                    on a.MedId equals b.MedId
+                    where a.PrescriptionId == b.PresccriptionId
+
+                    select new PharmacistBillingViewModel
+                    {
+                        MedBillId = a.MedBillId,
+                        PrescriptionId = a.PrescriptionId,
+                        MedId = b.MedId,
+                        MedPrice = b.MedPrice,
+                        MedQty = b.MedQty,
+                        MedicinePrice = (int)b.MedPrice
+                    }).ToListAsync();
+            }
+                return null;
+        }
+        #endregion
+
+        public async Task UpdateLabTest(Tests tests)
+        {
+            if (_context != null)
+            {
+                _context.Entry(tests).State = EntityState.Modified;
+                _context.Tests.Update(tests);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task<ActionResult<Tests>> GetTestById(int id)
+        {
+            if (_context != null)
+            {
+                var employee = await _context.Tests.FindAsync(id);// concentrating on primary key
+                return employee;
+            }
+            return null;
+        }
+
+        public async Task<int> AddLabReport(Tests test)
+        {
+            if (_context != null)
+            {
+                await _context.Tests.AddAsync(test);
+                await _context.SaveChangesAsync();
+                return test.TestId;
+            }
+            return 0;
+        }
+
+        public async Task UpdateLabReport(Tests tests)
+        {
+            if (_context != null)
+            {
+                _context.Entry(tests).State = EntityState.Modified;
+                _context.Tests.Update(tests);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }
