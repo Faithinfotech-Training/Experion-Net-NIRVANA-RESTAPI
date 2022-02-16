@@ -33,22 +33,38 @@ namespace ClinicalManagementSystemNirvana
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
             services.AddDbContext<CMSDBContext>(db =>
             db.UseSqlServer(Configuration.GetConnectionString("CMSConnectionDb")));
+            
             services.AddScoped<IPatient, PatientRepository>();
-
-            //enable cors
-            services.AddCors();
 
             //Add public dependency injection for StaffRepository
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
             services.AddScoped<IMedInventory, MedInventoryRepository>();
             services.AddScoped<IStaffRepository, StaffRepository>();
-           
             services.AddScoped<IInventory, InventoryRepo>();
             services.AddScoped<IMedLabPresc, MedLabPrescRepo>();
             services.AddScoped<IStaffRepository, StaffRepository>();
+            services.AddScoped<IRoleRepository, RolesRepository>();
+            services.AddScoped<IDoctorRepository, DoctorRepository>();
+
+            //Register JWT authentication Scheme here
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        //Configure the authentication scheme with JWT bearer options
+                        ValidateIssuer = true,
+                        ValidateAudience = true,
+                        ValidateIssuerSigningKey = true,
+                        ValidateLifetime = true,
+                        ValidIssuer = Configuration["Jwt:Issuer"],
+                        ValidAudience = Configuration["Jwt:Issuer"],
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
+                    };
+                }
+                );
 
             services.AddControllers().AddNewtonsoftJson(
                 options =>
@@ -66,22 +82,6 @@ namespace ClinicalManagementSystemNirvana
                     Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 });
 
-            //Register JWT authentication schema
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-            .AddJwtBearer(options =>
-            {
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    //Configure authentication scheme with jwt bearer options
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = Configuration["Jwt:Issuer"],
-                    ValidAudience = Configuration["Jwt:Issuer"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
-                };
-            });
             services.AddMvc();
 
         }
@@ -89,14 +89,14 @@ namespace ClinicalManagementSystemNirvana
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
-            //cors
+            //Cors
             app.UseCors(options =>
-            options.AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader()
-            );
-             if (env.IsDevelopment())
+                options.AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+
+                );
+            if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
