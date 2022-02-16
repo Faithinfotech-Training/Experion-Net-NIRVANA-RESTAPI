@@ -46,6 +46,31 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #endregion
 
+        //LAB REPORT
+        #region Get LAB REPORT
+        [HttpGet]
+        [Route("labreport")]
+        public async Task<IActionResult> LabReport()
+        {
+            try
+            {
+                var presc = await _medlabRepository.labReport();
+                if (presc == null)
+                {
+                    //return Ok("Ok Api 1");
+                    return NotFound();
+                }
+                //return Ok("Ok Api 2");
+                return Ok(presc);
+            }
+            catch (Exception)
+            {
+                //return Ok("Ok Api 3");
+                return BadRequest();
+            }
+        }
+        #endregion
+
         //Medicine Prescribe
         #region Medicine Prescription
         [HttpPost]
