@@ -45,21 +45,6 @@ namespace ClinicalManagementSystemNirvana
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
             services.AddScoped<IMedInventory, MedInventoryRepository>();
             services.AddScoped<IStaffRepository, StaffRepository>();
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-             .AddJwtBearer(options =>
-             {
-                 options.TokenValidationParameters = new TokenValidationParameters
-                 {
-                      //configure the authenticatin scheme with jwt bearer options
-                      ValidateIssuer = true,
-                     ValidateAudience = true,
-                     ValidateIssuerSigningKey = true,
-                     ValidateLifetime = true,
-                     ValidIssuer = Configuration["Jwt:Issuer"],
-                     ValidAudience = Configuration["Jwt:Issuer"],
-                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))
-                 };
-             });
             services.AddScoped<IInventory, InventoryRepo>();
             services.AddScoped<IMedLabPresc, MedLabPrescRepo>();
             services.AddScoped<IStaffRepository, StaffRepository>();
