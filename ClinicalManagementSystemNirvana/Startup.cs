@@ -43,6 +43,9 @@ namespace ClinicalManagementSystemNirvana
 
             //Add public dependency injection for StaffRepository
             services.AddScoped<IAppointmentRepository, AppointmentRepository>();
+            services.AddScoped<IMedInventory, MedInventoryRepository>();
+            services.AddScoped<IStaffRepository, StaffRepository>();
+           
             services.AddScoped<IInventory, InventoryRepo>();
             services.AddScoped<IMedLabPresc, MedLabPrescRepo>();
             services.AddScoped<IStaffRepository, StaffRepository>();
@@ -82,22 +85,19 @@ namespace ClinicalManagementSystemNirvana
             });
             services.AddMvc();
 
-            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
 
-            //add cors
+            //cors
             app.UseCors(options =>
-                options.AllowAnyOrigin()
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                //.AllowCredentials()
-                );
-
-            if (env.IsDevelopment())
+            options.AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            );
+             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }

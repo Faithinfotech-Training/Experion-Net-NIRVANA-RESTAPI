@@ -95,22 +95,29 @@ namespace ClinicalManagementSystemNirvana.Repository
         }
         #endregion
 
-        #region Get staff by username and password
-        public async Task<IEnumerable<Staffs>> GetStaffByNameandPassword(string name, string password)
-        {
-            IQueryable<Staffs> result = _context.Staffs;
-            if (!string.IsNullOrEmpty(name))
-            {
-                result = result.Where(e => e.StaffName.Contains(name));
-            }
+        //#region Get staff by username and password
+        //public async Task<IEnumerable<Staffs>> GetStaffByNameandPassword(string name, string password)
+        //{
+        //    IQueryable<Staffs> result = _context.Staffs;
+        //    if (!string.IsNullOrEmpty(name))
+        //    {
+        //        result = result.Where(e => e.StaffName.Contains(name));
+        //    }
 
-            if (!string.IsNullOrEmpty(password))
-            {
-                result = result.Where(e => e.StaffPassword.Contains(password));
-            }
-            return await result.ToListAsync();
+        //    if (!string.IsNullOrEmpty(password))
+        //    {
+        //        result = result.Where(e => e.StaffPassword.Contains(password));
+        //    }
+        //    return await result.ToListAsync();
+        //}
+        //#endregion
+
+        public async Task<Staffs> GetStaffByUsernamePassword(string un, string pw)
+        {
+            return await (
+                from i in _context.Staffs where i.StaffName == un && i.StaffPassword == pw select i
+                ).FirstOrDefaultAsync();
         }
-        #endregion
 
         #region Get Staff ViewModel
         public async Task<List<StaffViewModel>> GetAllStaff()

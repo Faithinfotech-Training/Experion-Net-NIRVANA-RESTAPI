@@ -39,7 +39,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                                      on pre.PrescriptionId equals m.PresccriptionId
                                      join inv in _context.MedicineInventory
                                      on m.MedInvId equals inv.MedInvId
-                                     where p.PatientId==pre.PatientId
+                                     where p.PatientId == pre.PatientId
                                      select inv.MedicineName).ToList(),
                         LabTests = (from lre in _context.LabReport
                                     join t in _context.Tests
@@ -81,6 +81,32 @@ namespace ClinicalManagementSystemNirvana.Repository
             return 0;
         }
         #endregion
+
+        #region Pharmacist Bill
+
+        public async Task<List<PharmacistBillingViewModel>> GetMedBill()
+        {
+            if (_context != null)
+            {
+                return await (
+                    from a in _context.MedicineBilling
+                    join b in _context.Medicines
+                    on a.MedId equals b.MedId
+                    where a.PrescriptionId == b.PresccriptionId
+
+                    select new PharmacistBillingViewModel
+                    {
+                        MedBillId = a.MedBillId,
+                        PrescriptionId = a.PrescriptionId,
+                        MedId = b.MedId,
+                        MedPrice = b.MedPrice,
+                        MedQty = b.MedQty,
+                        MedicinePrice = (int)b.MedPrice
+                    }).ToListAsync();
+            }
+                return null;
+        }
+            #endregion
 
     }
 }
