@@ -153,7 +153,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
 
 
         #region  Get Staff By Username Password 
-        [HttpGet("{un}&{pw}")]
+        [HttpGet("login/{un}&{pw}")]
         [AllowAnonymous]
         
 

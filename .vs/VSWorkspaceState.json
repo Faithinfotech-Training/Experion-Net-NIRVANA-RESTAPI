@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\ClinicalManagementSystemNirvana"
+    "\\ClinicalManagementSystemNirvana",
+    "\\ClinicalManagementSystemNirvana\\Models"
   ],
   "SelectedNode": "\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.sln",
   "PreviewInSolutionExplorer": false
