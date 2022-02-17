@@ -154,9 +154,10 @@ namespace ClinicalManagementSystemNirvana.Repository
                                     {
                                         MedicineName = ae.MedicineName,
                                         MedPrice = ac.MedPrice,
-                                        MedQty = ac.MedQty
-                                    }).ToList(),
-                        GrandTotal = (int)(c.MedQty * c.MedPrice)
+                                        MedQty = ac.MedQty,
+                                        Total = (int)(ac.MedQty * ac.MedPrice)
+                                    }).ToList()
+                       
                     }).ToListAsync();
             }
                 return null;
