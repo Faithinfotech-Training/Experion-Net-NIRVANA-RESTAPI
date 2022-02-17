@@ -22,8 +22,6 @@ namespace ClinicalManagementSystemNirvana.Controllers
             _appointmentRepository = appointmentRepository;
         }
 
-
-
         #region getallappointments
         [HttpGet]
         [Route("getallappointments")]
@@ -69,7 +67,6 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #endregion
 
-
         
         #region add patient
         [HttpPost]
@@ -97,6 +94,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
             return BadRequest();
         }
         #endregion
+
         #region updateappointment
         public async Task<IActionResult> UpdateAppointment([FromBody] Appointments appointments)
         {
@@ -116,6 +114,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
             return BadRequest();
         }
         #endregion
+
         #region Get All appiontment
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Appointments>>> GetAppointments()
@@ -123,6 +122,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
             return await _appointmentRepository.GetAppointments();
         }
         #endregion
+
         #region get by id
         [HttpGet("{id}")]
         public async Task<ActionResult<Appointments>> GetAppointmentById(int? id)
