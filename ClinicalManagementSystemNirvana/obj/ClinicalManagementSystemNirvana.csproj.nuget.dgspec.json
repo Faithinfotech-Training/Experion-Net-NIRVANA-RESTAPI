@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "E:\\Final Project\\Git Repo\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj": {}
+    "D:\\Experion-Net-NIRVANA-RESTAPI\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj": {}
   },
   "projects": {
-    "E:\\Final Project\\Git Repo\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj": {
+    "D:\\Experion-Net-NIRVANA-RESTAPI\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\Final Project\\Git Repo\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj",
+        "projectUniqueName": "D:\\Experion-Net-NIRVANA-RESTAPI\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj",
         "projectName": "ClinicalManagementSystemNirvana",
-        "projectPath": "E:\\Final Project\\Git Repo\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj",
-        "packagesPath": "C:\\Users\\bidhu.m\\.nuget\\packages\\",
-        "outputPath": "E:\\Final Project\\Git Repo\\ClinicalManagementSystemNirvana\\obj\\",
+        "projectPath": "D:\\Experion-Net-NIRVANA-RESTAPI\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj",
+        "packagesPath": "C:\\Users\\sameena.f\\.nuget\\packages\\",
+        "outputPath": "D:\\Experion-Net-NIRVANA-RESTAPI\\ClinicalManagementSystemNirvana\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\bidhu.m\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sameena.f\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

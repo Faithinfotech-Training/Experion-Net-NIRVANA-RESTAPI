@@ -11,9 +11,9 @@ namespace ClinicalManagementSystemNirvana.Repository
     {
         Task<List<DoctorViewModel>> GetAllDoctorAndTokens(int id);
 
-        
+        Task<List<DoctorListViewModel>> GetDoctorList();
 
-        
+
 
     }
 }

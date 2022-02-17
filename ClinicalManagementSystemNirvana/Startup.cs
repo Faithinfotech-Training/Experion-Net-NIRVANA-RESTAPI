@@ -46,6 +46,7 @@ namespace ClinicalManagementSystemNirvana
             services.AddScoped<IMedLabPresc, MedLabPrescRepo>();
             services.AddScoped<IStaffRepository, StaffRepository>();
             services.AddScoped<IRoleRepository, RolesRepository>();
+            services.AddScoped<IDoctorRepository, DoctorRepository>();
 
             //Register JWT authentication Scheme here
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)

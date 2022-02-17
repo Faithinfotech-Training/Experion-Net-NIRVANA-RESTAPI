@@ -131,25 +131,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #endregion
 
-        //#region Search Staff using username and password
-        //[HttpGet("{search}/{name}&{password}")]
-        //public async Task<ActionResult<IEnumerable<Staffs>>> GetStaffByNameandPassword(string name, string password)
-        //{
-        //    try
-        //    {
-        //        var result = await _staffRepository.GetStaffByNameandPassword(name, password);
-        //        if (result == null)
-        //        {
-        //            return NotFound();
-        //        }
-        //        return Ok(result);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
-        //#endregion
+      
 
 
         #region  Get Staff By Username Password 
