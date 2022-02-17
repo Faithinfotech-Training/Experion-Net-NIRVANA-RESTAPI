@@ -12,6 +12,7 @@ namespace ClinicalManagementSystemNirvana.Repository
     {
         //get all appointment
         Task<List<Appointments>> GetAllAppointments();
+        Task<ActionResult<Appointments>> GetAppointmentById(int? id);
 
         //Join doctorId and Appointments
         Task<List<Appointmentviewmodel>> GetAllDoctorAndAppointments();
