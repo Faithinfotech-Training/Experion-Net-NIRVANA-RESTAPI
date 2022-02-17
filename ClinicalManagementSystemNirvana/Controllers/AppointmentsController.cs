@@ -22,8 +22,6 @@ namespace ClinicalManagementSystemNirvana.Controllers
             _appointmentRepository = appointmentRepository;
         }
 
-
-
         #region getallappointments
         [HttpGet]
         [Route("getallappointments")]
@@ -69,29 +67,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #endregion
 
-
-        //#region getdoctor
-        //[HttpGet]
-        //[Route("getdoctor")]
-        //public async Task<IActionResult> Getdoctor()
-        //{
-        //    try
-        //    {
-        //        var appointments = await _appointmentRepository.Getdoctor();
-
-
-        //        if (appointments == null)
-        //        {
-        //            return NotFound();
-        //        }
-        //        return Ok(appointments);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return BadRequest();
-        //    }
-        //}
-        //#endregion
+        
         #region add patient
         [HttpPost]
         public async Task<IActionResult> AddAppointment([FromBody] Appointments appointments)
@@ -118,6 +94,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
             return BadRequest();
         }
         #endregion
+
         #region updateappointment
         public async Task<IActionResult> UpdateAppointment([FromBody] Appointments appointments)
         {
@@ -137,11 +114,33 @@ namespace ClinicalManagementSystemNirvana.Controllers
             return BadRequest();
         }
         #endregion
+
         #region Get All appiontment
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Appointments>>> GetAppointments()
         {
             return await _appointmentRepository.GetAppointments();
+        }
+        #endregion
+
+        #region get by id
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Appointments>> GetAppointmentById(int? id)
+        {
+            try
+            {
+                var appointment = await _appointmentRepository.GetAppointmentById(id);
+                if (appointment == null)
+                {
+                    return NotFound();
+
+                }
+                return appointment; //return Ok(employee)
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
         }
         #endregion
 

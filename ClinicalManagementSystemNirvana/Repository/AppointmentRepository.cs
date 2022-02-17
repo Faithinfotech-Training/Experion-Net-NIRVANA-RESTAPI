@@ -1,5 +1,6 @@
 ﻿using ClinicalManagementSystemNirvana.Models;
 using ClinicalManagementSystemNirvana.View_Model;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -67,6 +68,17 @@ namespace ClinicalManagementSystemNirvana.Repository
             return null;
         }
 
+        public async Task<ActionResult<Appointments>> GetAppointmentById(int? id)
+        {
+            if (_context != null)
+            {
+                var appointment = await _context.Appointments.FindAsync(id);
+                return appointment;
+            }
+
+            return null;
+        }
+
         public async Task<List<Appointments>> GetAppointments()
         {
             if (_context != null)
@@ -87,20 +99,7 @@ namespace ClinicalManagementSystemNirvana.Repository
         }
         #endregion
 
-        //#region getdoctor
-        //public async Task<List<Appointments>> Getdoctor()
-        //{
-        //    if (_context != null)
-        //    {
-        //        return await _context.Appointments.Include(d => d.DoctorId).ToListAsync(); //performing lamda expression for
-        //                                                                           //showing many post
-        //                                                                           //are there under one category
-
-        //    }
-        //    return null;
-        //}
-        //#endregion
-
+        
 
 
 
