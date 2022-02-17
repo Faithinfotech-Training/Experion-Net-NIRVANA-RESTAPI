@@ -83,6 +83,7 @@ E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.
 E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.csproj.AssemblyReference.cache
 E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.GeneratedMSBuildEditorConfig.editorconfig
 E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.AssemblyInfoInputs.cache
 E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.AssemblyInfo.cs
@@ -96,4 +97,117 @@ E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.
 E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.dll
 E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.pdb
 E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.genruntimeconfig.cache
-E:\Final Project\Git Repo\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.csproj.AssemblyReference.cache
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\appsettings.Development.json
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\appsettings.json
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.exe
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.deps.json
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.runtimeconfig.json
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.runtimeconfig.dev.json
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.pdb
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\System.Web.Cors.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\System.Web.Http.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\System.Web.Http.Cors.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.GeneratedMSBuildEditorConfig.editorconfig
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.AssemblyInfoInputs.cache
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.AssemblyInfo.cs
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.csproj.CoreCompileInputs.cache
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.MvcApplicationPartsAssemblyInfo.cache
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\staticwebassets\ClinicalManagementSystemNirvana.StaticWebAssets.Manifest.cache
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\staticwebassets\ClinicalManagementSystemNirvana.StaticWebAssets.xml
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\scopedcss\bundle\ClinicalManagementSystemNirvana.styles.css
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.RazorTargetAssemblyInfo.cache
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.csproj.CopyComplete
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.dll
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.pdb
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.genruntimeconfig.cache
+D:\clinicalManagementSystem\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.csproj.AssemblyReference.cache
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\appsettings.Development.json
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\appsettings.json
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.exe
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.deps.json
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.runtimeconfig.json
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.runtimeconfig.dev.json
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.pdb
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\System.Web.Cors.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\System.Net.Http.Formatting.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\System.Web.Http.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\System.Web.Http.Cors.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Design.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.JsonWebTokens.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Logging.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Microsoft.IdentityModel.Tokens.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\System.IdentityModel.Tokens.Jwt.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.csproj.AssemblyReference.cache
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.GeneratedMSBuildEditorConfig.editorconfig
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.AssemblyInfoInputs.cache
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.AssemblyInfo.cs
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.csproj.CoreCompileInputs.cache
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.MvcApplicationPartsAssemblyInfo.cache
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\staticwebassets\ClinicalManagementSystemNirvana.StaticWebAssets.Manifest.cache
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\staticwebassets\ClinicalManagementSystemNirvana.StaticWebAssets.xml
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\scopedcss\bundle\ClinicalManagementSystemNirvana.styles.css
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.RazorTargetAssemblyInfo.cache
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.csproj.CopyComplete
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.dll
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.pdb
+E:\Experion-Net-NIRVANA-RESTAPI\ClinicalManagementSystemNirvana\obj\Debug\netcoreapp3.1\ClinicalManagementSystemNirvana.genruntimeconfig.cache
