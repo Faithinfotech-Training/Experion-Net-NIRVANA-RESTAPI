@@ -164,6 +164,55 @@ namespace ClinicalManagementSystemNirvana.Repository
         }
         #endregion
 
+        //Medicine Prescription
+        #region Medicine Prescription
+        public async Task<int> MedPresc(MedicinePrescriptionView mv)
+        {
+            MedPrescriptions mp = new MedPrescriptions();
+            mp.PrescriptionDate = mv.PrescriptionDate;
+            mp.PatientId = mv.PatientId;
+            mp.DoctorId = mv.DoctorId;
+
+            await _context.MedPrescriptions.AddAsync(mp);
+            await _context.SaveChangesAsync();
+
+            Medicines ms = new Medicines();
+            ms.MedPrice = mv.MedPrice;
+            ms.MedQty = mv.MedQty;
+            ms.MedDosage = mv.MedDosage;
+            ms.PresccriptionId = mp.PrescriptionId;
+            ms.MedInvId = mv.MedInvId;
+
+            await _context.Medicines.AddAsync(ms);
+            await _context.SaveChangesAsync();
+
+            return ms.MedId;
+        }
+        #endregion
+
+        //Lab Prescription
+        #region Lab Prescription
+        public async Task<int> LabPresc(LabPrescriptionView mv)
+        {
+            LabReport lr = new LabReport();
+            lr.ReportDate = mv.ReportDate;
+            lr.AppointmentId = mv.AppointmentId;
+
+            await _context.LabReport.AddAsync(lr);
+            await _context.SaveChangesAsync();
+
+            Tests ts = new Tests();
+            ts.TestResValue = mv.TestResValue;
+            ts.ReportId = lr.ReportId;
+            ts.LabTestId = mv.LabTestId;
+
+            await _context.Tests.AddAsync(ts);
+            await _context.SaveChangesAsync();
+
+            return ts.TestId;
+        }
+        #endregion
+
         public async Task UpdateLabTest(Tests tests)
         {
             if (_context != null)
