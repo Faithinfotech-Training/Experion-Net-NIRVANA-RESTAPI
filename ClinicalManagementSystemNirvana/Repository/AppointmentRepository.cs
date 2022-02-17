@@ -1,5 +1,6 @@
 ﻿using ClinicalManagementSystemNirvana.Models;
 using ClinicalManagementSystemNirvana.View_Model;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -64,6 +65,17 @@ namespace ClinicalManagementSystemNirvana.Repository
                               }
                              ).ToListAsync();
             }
+            return null;
+        }
+
+        public async Task<ActionResult<Appointments>> GetAppointmentById(int? id)
+        {
+            if (_context != null)
+            {
+                var appointment = await _context.Appointments.FindAsync(id);
+                return appointment;
+            }
+
             return null;
         }
 

@@ -144,6 +144,26 @@ namespace ClinicalManagementSystemNirvana.Controllers
             return await _appointmentRepository.GetAppointments();
         }
         #endregion
+        #region get by id
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Appointments>> GetAppointmentById(int? id)
+        {
+            try
+            {
+                var appointment = await _appointmentRepository.GetAppointmentById(id);
+                if (appointment == null)
+                {
+                    return NotFound();
+
+                }
+                return appointment; //return Ok(employee)
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        #endregion
 
 
     }
