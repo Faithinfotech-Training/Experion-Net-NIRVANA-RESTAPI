@@ -130,18 +130,34 @@ namespace ClinicalManagementSystemNirvana.Repository
             {
                 return await (
                     from a in _context.MedicineBilling
-                    join b in _context.Medicines
-                    on a.MedId equals b.MedId
-                    where a.PrescriptionId == b.PresccriptionId
-
+                    from b in _context.MedPrescriptions
+                    from c in _context.Medicines
+                    where a.PrescriptionId == b.PrescriptionId &&
+                    a.MedId == c.MedId
                     select new PharmacistBillingViewModel
                     {
-                        MedBillId = a.MedBillId,
+                        Medicine_Bill_Id = a.MedBillId,
+                        BillDate = a.BillDate,
                         PrescriptionId = a.PrescriptionId,
-                        MedId = b.MedId,
-                        MedPrice = b.MedPrice,
-                        MedQty = b.MedQty,
-                        MedicinePrice = (int)b.MedPrice
+                        PatientId = b.PatientId,
+                        DoctorId = b.DoctorId,
+                        Medicine = (
+                                    from ac in _context.Medicines
+                                    join ab in _context.MedicineBilling
+                                    on ac.MedId equals ab.MedId
+                                    join ad in _context.MedPrescriptions
+                                    on ac.PresccriptionId equals ad.PrescriptionId
+                                    join ae in _context.MedicineInventory
+                                    on ac.MedInvId equals ae.MedInvId
+                                    where ab.PrescriptionId == a.PrescriptionId
+                                    select new MedicineViewModel
+                                    {
+                                        MedicineName = ae.MedicineName,
+                                        MedPrice = ac.MedPrice,
+                                        MedQty = ac.MedQty,
+                                        Total = (int)(ac.MedQty * ac.MedPrice)
+                                    }).ToList()
+                       
                     }).ToListAsync();
             }
                 return null;

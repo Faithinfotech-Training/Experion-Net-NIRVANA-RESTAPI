@@ -7,9 +7,10 @@ namespace ClinicalManagementSystemNirvana.View_Model
 {
     public class MedicineViewModel
     {
-        public int? MedPrice { get; set; }
-        public int MedQty { get; set; }
-
         public string MedicineName { get; set; }
+        public int MedQty { get; set; }
+        public int? MedPrice { get; set; }
+        public int Total { get; set; }
+
     }
 }

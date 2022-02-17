@@ -99,20 +99,7 @@ namespace ClinicalManagementSystemNirvana.Repository
         }
         #endregion
 
-        //#region getdoctor
-        //public async Task<List<Appointments>> Getdoctor()
-        //{
-        //    if (_context != null)
-        //    {
-        //        return await _context.Appointments.Include(d => d.DoctorId).ToListAsync(); //performing lamda expression for
-        //                                                                           //showing many post
-        //                                                                           //are there under one category
-
-        //    }
-        //    return null;
-        //}
-        //#endregion
-
+        
 
 
 

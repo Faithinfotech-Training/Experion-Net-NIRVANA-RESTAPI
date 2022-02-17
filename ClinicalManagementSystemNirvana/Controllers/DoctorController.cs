@@ -1,4 +1,5 @@
 ﻿using ClinicalManagementSystemNirvana.Repository;
+using ClinicalManagementSystemNirvana.View_Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -24,7 +25,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
 
 
 
-        #region  list doctor view model
+        #region Get appointment List By doctor ID 
         //api/appointments/doctor
         [HttpGet]
         [Route("appointments/{id}")]
@@ -44,6 +45,15 @@ namespace ClinicalManagementSystemNirvana.Controllers
             {
                 return BadRequest();
             }
+        }
+        #endregion
+
+        #region getdoctorList
+        [HttpGet]
+        [Route("doctors")]
+        public async Task<ActionResult<IEnumerable<DoctorListViewModel>>> GetDoctorList()
+        {
+            return await _doctorRepository.GetDoctorList();
         }
         #endregion
 
