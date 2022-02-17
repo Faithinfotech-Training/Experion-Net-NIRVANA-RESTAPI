@@ -1,5 +1,6 @@
 ﻿using ClinicalManagementSystemNirvana.Models;
 using ClinicalManagementSystemNirvana.View_Model;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                     from a in _context.Appointments
                     from p in _context.Patients
                     from s in _context.Staffs
-                    where a.DoctorId == s.StaffId
+                    where a.DoctorId == s.StaffId && a.PatientId == p.PatientId
                     select new PrescriptionsViewModel
                     {
                         PrescriptionId = a.AppointmentId,
@@ -53,6 +54,45 @@ namespace ClinicalManagementSystemNirvana.Repository
             return null;
         }
         #endregion
+
+        //view prescription details based on view model
+        #region view prescription details based on view model
+        public async Task<List<LabReportView>> labReport()
+        {
+            if (_context != null)
+            {
+                return await (
+                    from a in _context.Appointments
+                    from lr in _context.LabReport
+                    from p in _context.Patients
+                    from s in _context.Staffs
+                    from d in _context.Doctors
+                    where lr.AppointmentId == a.AppointmentId && a.PatientId == p.PatientId
+                    && a.DoctorId == d.DoctorId && d.DoctorId == s.StaffId
+                    select new LabReportView
+                    {
+                        ReportId = lr.ReportId,
+                        AppointmentId = a.AppointmentId,
+                        ReportDate = a.DateOfAppointment,
+                        Doctor = s.StaffName,
+                        Patient = p.PatientName,
+                        BloodGroup = p.BloodGroup,
+                        PhnNo = p.PatientPhoneNo,
+                        Tests = (       from ts in _context.Tests
+                                        join lb in _context.LabTests
+                                        on ts.LabTestId equals lb.LabTestId
+                                        where lr.ReportId == ts.ReportId
+                                        select new TestView
+                                        {
+                                            TestName = lb.TestName,
+                                            Result = ts.TestResValue
+                                        }).ToList()                     
+                    }).ToListAsync();           
+            }
+            return null;
+        }
+        #endregion
+
 
         //Prescribe Medicines
         #region Prescribe Medicine
@@ -106,7 +146,47 @@ namespace ClinicalManagementSystemNirvana.Repository
             }
                 return null;
         }
-            #endregion
+        #endregion
 
+        public async Task UpdateLabTest(Tests tests)
+        {
+            if (_context != null)
+            {
+                _context.Entry(tests).State = EntityState.Modified;
+                _context.Tests.Update(tests);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task<ActionResult<Tests>> GetTestById(int id)
+        {
+            if (_context != null)
+            {
+                var employee = await _context.Tests.FindAsync(id);// concentrating on primary key
+                return employee;
+            }
+            return null;
+        }
+
+        public async Task<int> AddLabReport(Tests test)
+        {
+            if (_context != null)
+            {
+                await _context.Tests.AddAsync(test);
+                await _context.SaveChangesAsync();
+                return test.TestId;
+            }
+            return 0;
+        }
+
+        public async Task UpdateLabReport(Tests tests)
+        {
+            if (_context != null)
+            {
+                _context.Entry(tests).State = EntityState.Modified;
+                _context.Tests.Update(tests);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }

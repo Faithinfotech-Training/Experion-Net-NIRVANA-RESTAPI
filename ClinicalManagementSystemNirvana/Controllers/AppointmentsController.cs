@@ -49,7 +49,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         #region  get all DoctorAndAppointments 
         //api/appointments/doctor
         [HttpGet]
-        [Route("tokencount")]
+        [Route("get")]
         public async Task<IActionResult> GetAllDoctorAndAppointments()
         {
             try
