@@ -176,6 +176,13 @@ namespace ClinicalManagementSystemNirvana.Repository
             await _context.MedPrescriptions.AddAsync(mp);
             await _context.SaveChangesAsync();
 
+            DoctorNotes dn = new DoctorNotes();
+            dn.Notes = mv.DoctorNotes;
+            dn.DoctorId = mv.DoctorId;
+            dn.AppointmentId = mv.AppointmentId;
+            await _context.DoctorNotes.AddAsync(dn);
+            await _context.SaveChangesAsync();
+
             Medicines ms = new Medicines();
             ms.MedPrice = mv.MedPrice;
             ms.MedQty = mv.MedQty;

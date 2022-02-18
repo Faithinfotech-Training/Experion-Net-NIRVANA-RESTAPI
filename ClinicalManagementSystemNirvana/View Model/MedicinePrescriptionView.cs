@@ -10,7 +10,8 @@ namespace ClinicalManagementSystemNirvana.View_Model
         public DateTime? PrescriptionDate { get; set; }
         public int? PatientId { get; set; }
         public int? DoctorId { get; set; }
-
+        public string DoctorNotes { get; set; }
+        public int AppointmentId { get; set; }
         public int? MedPrice { get; set; }
         public int MedQty { get; set; }
         public int? MedDosage { get; set; }
