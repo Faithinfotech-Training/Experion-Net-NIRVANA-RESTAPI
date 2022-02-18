@@ -66,7 +66,6 @@ namespace ClinicalManagementSystemNirvana.Controllers
             }
         }
         #endregion
-
         
         #region add patient
         [HttpPost]

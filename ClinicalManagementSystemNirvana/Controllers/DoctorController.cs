@@ -48,6 +48,29 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #endregion
 
+        //api/appointments/doctor
+        #region Appointment by ID
+        [HttpGet]
+        [Route("appointment/{id}")]
+        public async Task<IActionResult> GetAppById(int id)
+        {
+            try
+            {
+                var tokens = await _doctorRepository.GetAppbyId(id);
+
+                if (tokens == null)
+                {
+                    return NotFound();
+                }
+                return Ok(tokens);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        #endregion
+
         #region getdoctorList
         [HttpGet]
         [Route("doctors")]

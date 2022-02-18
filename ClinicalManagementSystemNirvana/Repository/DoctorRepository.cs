@@ -22,9 +22,6 @@ namespace ClinicalManagementSystemNirvana.Repository
         }
 
 
-
-
-
         #region GetAllDoctorAndTokens
 
         public async Task<List<DoctorViewModel>> GetAllDoctorAndTokens(int id)
@@ -46,6 +43,38 @@ namespace ClinicalManagementSystemNirvana.Repository
                                   DoctorId = d.DoctorId,
                                   PatientId = a.PatientId,
                                   PatientName = p.PatientName
+                              }
+                             ).ToListAsync();
+            }
+            return null;
+
+        }
+
+        #endregion
+
+        #region GetAppointment by ID 
+
+        public async Task<List<DoctorViewModel>> GetAppbyId(int id)
+        {
+
+            if (_context != null)
+            //linq
+            {
+                return await (from a in _context.Appointments
+                              from d in _context.Doctors
+                              from p in _context.Patients
+                              from s in _context.Staffs
+
+                              where a.DoctorId == d.DoctorId && d.DoctorId == s.StaffId && p.PatientId == a.PatientId && a.AppointmentId == id
+                              select new DoctorViewModel
+                              {
+                                  AppointmentId = a.AppointmentId,
+                                  TokenNo = a.TokenNo,
+                                  DateOfAppointment = a.DateOfAppointment,
+                                  DoctorId = d.DoctorId,
+                                  PatientId = a.PatientId,
+                                  PatientName = p.PatientName,
+                                  DoctorName = s.StaffName
                               }
                              ).ToListAsync();
             }
