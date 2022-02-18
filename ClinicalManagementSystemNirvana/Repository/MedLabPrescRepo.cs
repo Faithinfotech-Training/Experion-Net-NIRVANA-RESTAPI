@@ -28,10 +28,12 @@ namespace ClinicalManagementSystemNirvana.Repository
                     from a in _context.Appointments
                     from p in _context.Patients
                     from s in _context.Staffs
-                    where a.DoctorId == s.StaffId && a.PatientId == p.PatientId
+                    from lr in _context.LabReport
+                    where a.DoctorId == s.StaffId && a.PatientId == p.PatientId && lr.AppointmentId == a.AppointmentId 
                     select new PrescriptionsViewModel
                     {
                         PrescriptionId = a.AppointmentId,
+                        ReportId = lr.ReportId,
                         PrescriptionDate = a.DateOfAppointment,
                         PatientName = p.PatientName,
                         DoctorName = s.StaffName,

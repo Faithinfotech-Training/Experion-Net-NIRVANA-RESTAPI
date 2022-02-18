@@ -8,6 +8,7 @@ namespace ClinicalManagementSystemNirvana.View_Model
     public class PrescriptionsViewModel
     {
         public int PrescriptionId { get; set; }
+        public int ReportId { get; set; }
         public DateTime? PrescriptionDate { get; set; }
         public string PatientName { get; set; }
         public string DoctorName { get; set; }
