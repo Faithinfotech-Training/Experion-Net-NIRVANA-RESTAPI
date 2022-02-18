@@ -36,5 +36,11 @@ namespace ClinicalManagementSystemNirvana.Repository
 
         Task<List<LabReportView>> labReport();
 
+        //MEDICINE PRESCRIPTION
+        Task<int> MedPresc(MedicinePrescriptionView mv);
+
+        //LAB PRESCRIPTION
+        Task<int> LabPresc(LabPrescriptionView mv);
+
     }
 }

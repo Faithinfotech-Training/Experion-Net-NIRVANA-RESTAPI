@@ -1,5 +1,6 @@
 ﻿using ClinicalManagementSystemNirvana.Models;
 using ClinicalManagementSystemNirvana.Repository;
+using ClinicalManagementSystemNirvana.View_Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -198,6 +199,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
 
         #region Add LabReport 
         [HttpPost]
+        [Route("labreport")]
         public async Task<IActionResult> AddLabReport([FromBody] Tests tests)
         {
             //check validation of body
@@ -222,11 +224,11 @@ namespace ClinicalManagementSystemNirvana.Controllers
             }
             return BadRequest();
         }
-
         #endregion
 
         #region UpdateLabReport
         [HttpPut]
+        [Route("labreport")]
         public async Task<IActionResult> UpdateLabReport([FromBody] Tests tests)
         {
             //check validation of body
@@ -245,6 +247,60 @@ namespace ClinicalManagementSystemNirvana.Controllers
             return BadRequest();
         }
         #endregion
+
+        //Medicine Prescribe
+        [HttpPost]
+        [Route("medPresc")]
+        public async Task<IActionResult> MedPresc([FromBody] MedicinePrescriptionView mpv)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var id = await _medlabRepository.MedPresc(mpv);
+                    if (id > 0)
+                    {
+                        return Ok(id);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+                catch(Exception)
+                {
+                    return BadRequest();
+                }
+            }
+            return BadRequest();
+        }
+
+        //Lab Prescribe
+        [HttpPost]
+        [Route("labPresc")]
+        public async Task<IActionResult> LabPresc([FromBody] LabPrescriptionView mpv)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var id = await _medlabRepository.LabPresc(mpv);
+                    if (id > 0)
+                    {
+                        return Ok(id);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+                catch (Exception)
+                {
+                    return BadRequest();
+                }
+            }
+            return BadRequest();
+        }
 
     }
 }

@@ -13,7 +13,7 @@ namespace ClinicalManagementSystemNirvana.Repository
 
         Task<List<DoctorListViewModel>> GetDoctorList();
 
-
+        Task<List<DoctorViewModel>> GetAppbyId(int id);
 
     }
 }
