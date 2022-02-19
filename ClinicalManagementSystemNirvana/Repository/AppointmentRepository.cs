@@ -52,15 +52,17 @@ namespace ClinicalManagementSystemNirvana.Repository
                 return await (from a in _context.Appointments
                               from d in _context.Doctors
                               from p in _context.Patients
-                              where a.DoctorId == d.DoctorId
-                              select new Appointmentviewmodel
+                              from s in _context.Staffs 
+                              where a.DoctorId == d.DoctorId && d.StaffId==s.StaffId  && a.PatientId==p.PatientId
+                              select new Appointmentviewmodel 
                               {
                                   AppointmentId = a.AppointmentId,
                                   TokenNo = a.TokenNo,
                                   DateOfAppointment = a.DateOfAppointment,
                                   DoctorId = d.DoctorId,
                                   PatientId=p.PatientId,
-                                  PatientName=p.PatientName
+                                  PatientName=p.PatientName,
+                                  DoctorName=s.StaffName
                                  
                               }
                              ).ToListAsync();

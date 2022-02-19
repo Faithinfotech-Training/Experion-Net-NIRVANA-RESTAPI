@@ -11,6 +11,7 @@ namespace ClinicalManagementSystemNirvana.View_Model
         public int AppointmentId { get; set; } 
         public int TokenNo { get; set; }
         public int? DoctorId { get; set; }
+        public string DoctorName { get; set; }
         public string PatientName { get; set; }
         public int? PatientId { get; set; }
         
