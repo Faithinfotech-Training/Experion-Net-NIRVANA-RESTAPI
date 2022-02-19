@@ -29,7 +29,7 @@ namespace ClinicalManagementSystemNirvana.Models
         public virtual DbSet<Staffs> Staffs { get; set; }
         public virtual DbSet<Tests> Tests { get; set; }
 
-        /*protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+       /* protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
@@ -44,7 +44,7 @@ namespace ClinicalManagementSystemNirvana.Models
             modelBuilder.Entity<Appointments>(entity =>
             {
                 entity.HasKey(e => e.AppointmentId)
-                    .HasName("PK__Appointm__8ECDFCC2DA7C38E7");
+                    .HasName("PK__Appointm__8ECDFCC2846D025E");
 
                 entity.Property(e => e.DateOfAppointment).HasColumnType("datetime");
 
@@ -71,18 +71,18 @@ namespace ClinicalManagementSystemNirvana.Models
                 entity.HasOne(d => d.Appointment)
                     .WithMany(p => p.DoctorNotes)
                     .HasForeignKey(d => d.AppointmentId)
-                    .HasConstraintName("FK__DoctorNot__Appoi__4AB81AF0");
+                    .HasConstraintName("FK__DoctorNot__Appoi__49C3F6B7");
 
                 entity.HasOne(d => d.Doctor)
                     .WithMany(p => p.DoctorNotes)
                     .HasForeignKey(d => d.DoctorId)
-                    .HasConstraintName("FK__DoctorNot__Docto__49C3F6B7");
+                    .HasConstraintName("FK__DoctorNot__Docto__48CFD27E");
             });
 
             modelBuilder.Entity<Doctors>(entity =>
             {
                 entity.HasKey(e => e.DoctorId)
-                    .HasName("PK__Doctors__2DC00EBF27E1F821");
+                    .HasName("PK__Doctors__2DC00EBFC893BB86");
 
                 entity.Property(e => e.Specialization)
                     .HasMaxLength(45)
@@ -97,20 +97,20 @@ namespace ClinicalManagementSystemNirvana.Models
             modelBuilder.Entity<LabReport>(entity =>
             {
                 entity.HasKey(e => e.ReportId)
-                    .HasName("PK__LabRepor__D5BD4805DCBD5016");
+                    .HasName("PK__LabRepor__D5BD4805FC72C04E");
 
                 entity.Property(e => e.ReportDate).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Appointment)
                     .WithMany(p => p.LabReport)
                     .HasForeignKey(d => d.AppointmentId)
-                    .HasConstraintName("FK__LabReport__Appoi__3F466844");
+                    .HasConstraintName("FK__LabReport__Appoi__3E52440B");
             });
 
             modelBuilder.Entity<LabTests>(entity =>
             {
                 entity.HasKey(e => e.LabTestId)
-                    .HasName("PK__LabTests__64D33925FECBE51D");
+                    .HasName("PK__LabTests__64D339256EC8D5D4");
 
                 entity.Property(e => e.TestDesc)
                     .HasMaxLength(40)
@@ -131,43 +131,38 @@ namespace ClinicalManagementSystemNirvana.Models
             modelBuilder.Entity<MedPrescriptions>(entity =>
             {
                 entity.HasKey(e => e.PrescriptionId)
-                    .HasName("PK__MedPresc__401308328B79B82C");
+                    .HasName("PK__MedPresc__40130832065D6918");
 
                 entity.Property(e => e.PrescriptionDate).HasColumnType("date");
 
-                entity.HasOne(d => d.Doctor)
+                entity.HasOne(d => d.Appointment)
                     .WithMany(p => p.MedPrescriptions)
-                    .HasForeignKey(d => d.DoctorId)
-                    .HasConstraintName("FK__MedPrescr__Docto__38996AB5");
-
-                entity.HasOne(d => d.Patient)
-                    .WithMany(p => p.MedPrescriptions)
-                    .HasForeignKey(d => d.PatientId)
-                    .HasConstraintName("FK__MedPrescr__Patie__37A5467C");
+                    .HasForeignKey(d => d.AppointmentId)
+                    .HasConstraintName("FK__MedPrescr__Appoi__37A5467C");
             });
 
             modelBuilder.Entity<MedicineBilling>(entity =>
             {
                 entity.HasKey(e => e.MedBillId)
-                    .HasName("PK__Medicine__75B06D8CDE93FB04");
+                    .HasName("PK__Medicine__75B06D8C5DB8F2A6");
 
                 entity.Property(e => e.BillDate).HasColumnType("datetime");
 
                 entity.HasOne(d => d.Med)
                     .WithMany(p => p.MedicineBilling)
                     .HasForeignKey(d => d.MedId)
-                    .HasConstraintName("FK__MedicineB__MedId__46E78A0C");
+                    .HasConstraintName("FK__MedicineB__MedId__45F365D3");
 
                 entity.HasOne(d => d.Prescription)
                     .WithMany(p => p.MedicineBilling)
                     .HasForeignKey(d => d.PrescriptionId)
-                    .HasConstraintName("FK__MedicineB__Presc__45F365D3");
+                    .HasConstraintName("FK__MedicineB__Presc__44FF419A");
             });
 
             modelBuilder.Entity<MedicineInventory>(entity =>
             {
                 entity.HasKey(e => e.MedInvId)
-                    .HasName("PK__Medicine__C4B68A759C008891");
+                    .HasName("PK__Medicine__C4B68A75C966567C");
 
                 entity.Property(e => e.MedDesc).IsUnicode(false);
 
@@ -184,23 +179,23 @@ namespace ClinicalManagementSystemNirvana.Models
             modelBuilder.Entity<Medicines>(entity =>
             {
                 entity.HasKey(e => e.MedId)
-                    .HasName("PK__Medicine__EB77FC56816FF6AC");
+                    .HasName("PK__Medicine__EB77FC56A7C182A1");
 
                 entity.HasOne(d => d.MedInv)
                     .WithMany(p => p.Medicines)
                     .HasForeignKey(d => d.MedInvId)
-                    .HasConstraintName("FK__Medicines__MedIn__3C69FB99");
+                    .HasConstraintName("FK__Medicines__MedIn__3B75D760");
 
                 entity.HasOne(d => d.Presccription)
                     .WithMany(p => p.Medicines)
                     .HasForeignKey(d => d.PresccriptionId)
-                    .HasConstraintName("FK__Medicines__Presc__3B75D760");
+                    .HasConstraintName("FK__Medicines__Presc__3A81B327");
             });
 
             modelBuilder.Entity<Patients>(entity =>
             {
                 entity.HasKey(e => e.PatientId)
-                    .HasName("PK__Patients__970EC36622394B6B");
+                    .HasName("PK__Patients__970EC366C8892BF7");
 
                 entity.Property(e => e.BloodGroup)
                     .HasMaxLength(10)
@@ -226,7 +221,7 @@ namespace ClinicalManagementSystemNirvana.Models
             modelBuilder.Entity<Roles>(entity =>
             {
                 entity.HasKey(e => e.RoleId)
-                    .HasName("PK__Roles__8AFACE1A3556C23E");
+                    .HasName("PK__Roles__8AFACE1A2778FE35");
 
                 entity.Property(e => e.RoleName)
                     .IsRequired()
@@ -237,7 +232,7 @@ namespace ClinicalManagementSystemNirvana.Models
             modelBuilder.Entity<Staffs>(entity =>
             {
                 entity.HasKey(e => e.StaffId)
-                    .HasName("PK__Staffs__96D4AB178CA55219");
+                    .HasName("PK__Staffs__96D4AB17AA9C6B58");
 
                 entity.Property(e => e.BloodGroup)
                     .HasMaxLength(10)
@@ -279,17 +274,17 @@ namespace ClinicalManagementSystemNirvana.Models
             modelBuilder.Entity<Tests>(entity =>
             {
                 entity.HasKey(e => e.TestId)
-                    .HasName("PK__Tests__8CC33160A466BFAB");
+                    .HasName("PK__Tests__8CC33160F997DA2B");
 
                 entity.HasOne(d => d.LabTest)
                     .WithMany(p => p.Tests)
                     .HasForeignKey(d => d.LabTestId)
-                    .HasConstraintName("FK__Tests__LabTestId__4316F928");
+                    .HasConstraintName("FK__Tests__LabTestId__4222D4EF");
 
                 entity.HasOne(d => d.Report)
                     .WithMany(p => p.Tests)
                     .HasForeignKey(d => d.ReportId)
-                    .HasConstraintName("FK__Tests__ReportId__4222D4EF");
+                    .HasConstraintName("FK__Tests__ReportId__412EB0B6");
             });
 
             OnModelCreatingPartial(modelBuilder);

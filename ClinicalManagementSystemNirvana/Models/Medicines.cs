@@ -12,7 +12,7 @@ namespace ClinicalManagementSystemNirvana.Models
 
         public int MedId { get; set; }
         public int? MedPrice { get; set; }
-        public int MedQty { get; set; }
+        public int? MedQty { get; set; }
         public int? MedDosage { get; set; }
         public int? PresccriptionId { get; set; }
         public int? MedInvId { get; set; }

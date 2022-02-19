@@ -124,6 +124,31 @@ namespace ClinicalManagementSystemNirvana.Repository
         }
         #endregion
 
+        //LabReport and Med Prescriptions - For Prescription
+        #region Prescribe Labtests and Lab Prescriptions
+        public async Task<int> LabReport(LabReport test)
+        {
+            if (_context != null)
+            {
+                await _context.LabReport.AddAsync(test);
+                await _context.SaveChangesAsync();
+                return test.ReportId;
+            }
+            return 0;
+        }
+
+        public async Task<int> MedPrescription(MedPrescriptions test)
+        {
+            if (_context != null)
+            {
+                await _context.MedPrescriptions.AddAsync(test);
+                await _context.SaveChangesAsync();
+                return test.PrescriptionId;
+            }
+            return 0;
+        }
+        #endregion
+
         #region Pharmacist Bill
 
         public async Task<List<PharmacistBillingViewModel>> GetMedBill()
@@ -170,26 +195,19 @@ namespace ClinicalManagementSystemNirvana.Repository
         #region Medicine Prescription
         public async Task<int> MedPresc(MedicinePrescriptionView mv)
         {
-            MedPrescriptions mp = new MedPrescriptions();
-            mp.PrescriptionDate = mv.PrescriptionDate;
-            mp.PatientId = mv.PatientId;
-            mp.DoctorId = mv.DoctorId;
-
-            await _context.MedPrescriptions.AddAsync(mp);
-            await _context.SaveChangesAsync();
 
             DoctorNotes dn = new DoctorNotes();
             dn.Notes = mv.DoctorNotes;
             dn.DoctorId = mv.DoctorId;
             dn.AppointmentId = mv.AppointmentId;
+
             await _context.DoctorNotes.AddAsync(dn);
             await _context.SaveChangesAsync();
 
             Medicines ms = new Medicines();
-            ms.MedPrice = mv.MedPrice;
             ms.MedQty = mv.MedQty;
             ms.MedDosage = mv.MedDosage;
-            ms.PresccriptionId = mp.PrescriptionId;
+            ms.PresccriptionId = mv.PresccriptionId;
             ms.MedInvId = mv.MedInvId;
 
             await _context.Medicines.AddAsync(ms);
@@ -262,5 +280,49 @@ namespace ClinicalManagementSystemNirvana.Repository
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task<int> prescribeLab(Tests ts , int apId)
+        {
+            if (_context != null)
+            {
+                var temp = _context.LabReport.Where(x => x.AppointmentId == apId).FirstOrDefault();
+                if (temp == null)
+                {
+                    LabReport lr = new LabReport();
+                    lr.AppointmentId = apId;
+                    lr.ReportDate = DateTime.Now;
+                    await _context.LabReport.AddAsync(lr);
+                    await _context.SaveChangesAsync();
+                }
+                temp = _context.LabReport.Where(x => x.AppointmentId == apId).FirstOrDefault();
+                ts.ReportId = temp.ReportId;
+                await _context.Tests.AddAsync(ts);
+                await _context.SaveChangesAsync();
+                return ts.TestId;
+            }
+            return 0;
+        }
+
+        /*public async Task<int> prescribeMed(Medicines ms, int apId)
+        {
+            if (_context != null)
+            {
+                var temp = _context.MedPrescriptions.Where(x => x.AppointmentId == apId).FirstOrDefault();
+                if (temp == null)
+                {
+                    LabReport lr = new LabReport();
+                    lr.AppointmentId = apId;
+                    lr.ReportDate = DateTime.Now;
+                    await _context.LabReport.AddAsync(lr);
+                    await _context.SaveChangesAsync();
+                }
+                temp = _context.LabReport.Where(x => x.AppointmentId == apId).FirstOrDefault();
+                ts.ReportId = temp.ReportId;
+                await _context.Tests.AddAsync(ts);
+                await _context.SaveChangesAsync();
+                return ts.TestId;
+            }
+            return 0;
+        }*/
     }
 }

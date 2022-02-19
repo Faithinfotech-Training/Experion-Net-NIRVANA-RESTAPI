@@ -72,6 +72,60 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #endregion
 
+        [HttpPost]
+        [Route("labsreport")]
+        public async Task<IActionResult> AddLabReport([FromBody] LabReport labInv)
+        {
+            //check validation of body
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var labId = await _medlabRepository.LabReport(labInv);
+                    if (labId > 0)
+                    {
+                        return Ok(labId);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+                catch (Exception)
+                {
+                    return BadRequest();
+                }
+            }
+            return BadRequest();
+        }
+
+        [HttpPost]
+        [Route("medspresc")]
+        public async Task<IActionResult> AddMedPrescription([FromBody] MedPrescriptions labInv)
+        {
+            //check validation of body
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var labId = await _medlabRepository.MedPrescription(labInv);
+                    if (labId > 0)
+                    {
+                        return Ok(labId);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+                catch (Exception)
+                {
+                    return BadRequest();
+                }
+            }
+            return BadRequest();
+        }
+
         //Medicine Prescribe
         #region Medicine Prescription
         [HttpPost]
@@ -301,6 +355,10 @@ namespace ClinicalManagementSystemNirvana.Controllers
             }
             return BadRequest();
         }
+
+
+
+
 
     }
 }
