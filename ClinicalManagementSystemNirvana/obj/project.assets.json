@@ -5541,19 +5541,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\bidhu.m\\.nuget\\packages\\": {}
+    "C:\\Users\\sneha.salu\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Experion-Net-NIRVANA-RESTAPI\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj",
+      "projectUniqueName": "E:\\project API\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj",
       "projectName": "ClinicalManagementSystemNirvana",
-      "projectPath": "E:\\Experion-Net-NIRVANA-RESTAPI\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj",
-      "packagesPath": "C:\\Users\\bidhu.m\\.nuget\\packages\\",
-      "outputPath": "E:\\Experion-Net-NIRVANA-RESTAPI\\ClinicalManagementSystemNirvana\\obj\\",
+      "projectPath": "E:\\project API\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj",
+      "packagesPath": "C:\\Users\\sneha.salu\\.nuget\\packages\\",
+      "outputPath": "E:\\project API\\ClinicalManagementSystemNirvana\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\bidhu.m\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sneha.salu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
