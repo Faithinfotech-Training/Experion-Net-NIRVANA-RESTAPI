@@ -91,7 +91,8 @@ namespace ClinicalManagementSystemNirvana.Repository
                 return await (from p in _context.Patients
                               from r in _context.Roles
                               from m in _context.MedPrescriptions
-                              where m.PatientId == p.PatientId
+                              from a in _context.Appointments
+                              where a.AppointmentId == m.AppointmentId && a.PatientId == p.PatientId
                               select new MedPrescriptionsviewmodel
                               {
                                   PrescriptionId=m.PrescriptionId,

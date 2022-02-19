@@ -39,10 +39,12 @@ namespace ClinicalManagementSystemNirvana.Repository
         //MEDICINE PRESCRIPTION
         Task<int> MedPresc(MedicinePrescriptionView mv);
         Task<int> MedPrescription(MedPrescriptions test);
+        Task<int> prescribeMed(Medicines ms, int apId); //WORKING
+
 
         //LAB PRESCRIPTION
         Task<int> LabPresc(LabPrescriptionView mv);
         Task<int> LabReport(LabReport test);
-
+        Task<int> prescribeLab(Tests ts, int apId); //WORKING
     }
 }

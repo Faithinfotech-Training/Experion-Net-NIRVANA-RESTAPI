@@ -304,7 +304,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
 
         //Medicine Prescribe
         [HttpPost]
-        [Route("medPresc")]
+        [Route("medPrescs")]
         public async Task<IActionResult> MedPresc([FromBody] MedicinePrescriptionView mpv)
         {
             if (ModelState.IsValid)
@@ -331,7 +331,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
 
         //Lab Prescribe
         [HttpPost]
-        [Route("labPresc")]
+        [Route("labPrescs")]
         public async Task<IActionResult> LabPresc([FromBody] LabPrescriptionView mpv)
         {
             if (ModelState.IsValid)
@@ -357,8 +357,60 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
 
 
+        //Medicine Prescribe WORKING
+        [HttpPost]
+        [Route("medPresc/{apId}")]
+        public async Task<IActionResult> prescribeMed([FromBody] Medicines mpv , int apId)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var id = await _medlabRepository.prescribeMed(mpv,apId);
+                    if (id > 0)
+                    {
+                        return Ok(id);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+                catch (Exception)
+                {
+                    return BadRequest();
+                }
+            }
+            return BadRequest();
+        }
 
 
+        //Medicine Prescribe WORKING
+        [HttpPost]
+        [Route("medPresc/{apId}")]
 
+        public async Task<IActionResult> prescribeLab([FromBody] Tests mpv, int apId)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var id = await _medlabRepository.prescribeLab(mpv, apId);
+                    if (id > 0)
+                    {
+                        return Ok(id);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+                catch (Exception)
+                {
+                    return BadRequest();
+                }
+            }
+            return BadRequest();
+        }
     }
 }
