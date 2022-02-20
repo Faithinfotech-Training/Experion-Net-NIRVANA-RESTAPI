@@ -302,7 +302,9 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #endregion
 
-        //Medicine Prescribe
+        #region COMMENTED CODES - USE LATER
+
+        /*//Medicine Prescribe
         [HttpPost]
         [Route("medPrescs")]
         public async Task<IActionResult> MedPresc([FromBody] MedicinePrescriptionView mpv)
@@ -354,8 +356,13 @@ namespace ClinicalManagementSystemNirvana.Controllers
                 }
             }
             return BadRequest();
-        }
+        }*/
+        #endregion
 
+
+
+
+        #region PRESCRIPTION CODES - WORKING MAIN MODULES
 
         //Medicine Prescribe WORKING
         [HttpPost]
@@ -385,10 +392,9 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
 
 
-        //Medicine Prescribe WORKING
+        //Lab Prescribe WORKING
         [HttpPost]
-        [Route("medPresc/{apId}")]
-
+        [Route("labPresc/{apId}")]
         public async Task<IActionResult> prescribeLab([FromBody] Tests mpv, int apId)
         {
             if (ModelState.IsValid)
@@ -412,5 +418,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
             }
             return BadRequest();
         }
+
+        #endregion
     }
 }
