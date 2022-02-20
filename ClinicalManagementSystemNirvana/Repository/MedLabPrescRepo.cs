@@ -326,5 +326,16 @@ namespace ClinicalManagementSystemNirvana.Repository
             }
             return 0;
         }
+
+        public async Task<int> AddDoctorNotes(DoctorNotes test)
+        {
+            if (_context != null)
+            {
+                await _context.DoctorNotes.AddAsync(test);
+                await _context.SaveChangesAsync();
+                return test.DoctorNotesId;
+            }
+            return 0;
+        }
     }
 }

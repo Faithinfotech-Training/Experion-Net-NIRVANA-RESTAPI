@@ -72,120 +72,6 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #endregion
 
-        [HttpPost]
-        [Route("labsreport")]
-        public async Task<IActionResult> AddLabReport([FromBody] LabReport labInv)
-        {
-            //check validation of body
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    var labId = await _medlabRepository.LabReport(labInv);
-                    if (labId > 0)
-                    {
-                        return Ok(labId);
-                    }
-                    else
-                    {
-                        return NotFound();
-                    }
-                }
-                catch (Exception)
-                {
-                    return BadRequest();
-                }
-            }
-            return BadRequest();
-        }
-
-        [HttpPost]
-        [Route("medspresc")]
-        public async Task<IActionResult> AddMedPrescription([FromBody] MedPrescriptions labInv)
-        {
-            //check validation of body
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    var labId = await _medlabRepository.MedPrescription(labInv);
-                    if (labId > 0)
-                    {
-                        return Ok(labId);
-                    }
-                    else
-                    {
-                        return NotFound();
-                    }
-                }
-                catch (Exception)
-                {
-                    return BadRequest();
-                }
-            }
-            return BadRequest();
-        }
-
-        //Medicine Prescribe
-        #region Medicine Prescription
-        [HttpPost]
-        [Route("medicine")]
-        public async Task<IActionResult> PrescribeMed([FromBody] Medicines med)
-        {
-            //check validation of body
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    var Id = await _medlabRepository.PrescribeMed(med);
-                    if (Id > 0)
-                    {
-                        return Ok(Id);
-                    }
-                    else
-                    {
-                        return NotFound();
-                    }
-                }
-                catch (Exception)
-                {
-                    return BadRequest();
-                }
-            }
-            return BadRequest();
-        }
-        #endregion
-
-        //LabTest Prescribe
-        #region Lab Test Prescription
-        [HttpPost]
-        [Route("labtest")]
-        public async Task<IActionResult> AddCategory([FromBody] Tests test)
-        {
-            //check validation of body
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    var Id = await _medlabRepository.PrescribeLabTests(test);
-                    if (Id > 0)
-                    {
-                        return Ok(Id);
-                    }
-                    else
-                    {
-                        return NotFound();
-                    }
-                }
-                catch (Exception)
-                {
-                    return BadRequest();
-                }
-            }
-            return BadRequest();
-        }
-        #endregion
-
         #region Pharmacy Billing
         [HttpGet]
         [Route("GetMedBill")]
@@ -302,6 +188,10 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #endregion
 
+
+
+        //MAIN MODULES FOR PRESCRIPTION
+
         #region COMMENTED CODES - USE LATER
 
         /*//Medicine Prescribe
@@ -359,8 +249,123 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }*/
         #endregion
 
+        #region NOT WORKING CODES - FOR REUSE
 
+        [HttpPost]
+        [Route("labsreport")]
+        public async Task<IActionResult> AddLabReport([FromBody] LabReport labInv)
+        {
+            //check validation of body
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var labId = await _medlabRepository.LabReport(labInv);
+                    if (labId > 0)
+                    {
+                        return Ok(labId);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+                catch (Exception)
+                {
+                    return BadRequest();
+                }
+            }
+            return BadRequest();
+        }
 
+        [HttpPost]
+        [Route("medspresc")]
+        public async Task<IActionResult> AddMedPrescription([FromBody] MedPrescriptions labInv)
+        {
+            //check validation of body
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var labId = await _medlabRepository.MedPrescription(labInv);
+                    if (labId > 0)
+                    {
+                        return Ok(labId);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+                catch (Exception)
+                {
+                    return BadRequest();
+                }
+            }
+            return BadRequest();
+        }
+
+        //Medicine Prescribe
+        #region Medicine Prescription
+        [HttpPost]
+        [Route("medicine")]
+        public async Task<IActionResult> PrescribeMed([FromBody] Medicines med)
+        {
+            //check validation of body
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var Id = await _medlabRepository.PrescribeMed(med);
+                    if (Id > 0)
+                    {
+                        return Ok(Id);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+                catch (Exception)
+                {
+                    return BadRequest();
+                }
+            }
+            return BadRequest();
+        }
+        #endregion
+
+        //LabTest Prescribe
+        #region Lab Test Prescription
+        [HttpPost]
+        [Route("labtest")]
+        public async Task<IActionResult> AddCategory([FromBody] Tests test)
+        {
+            //check validation of body
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var Id = await _medlabRepository.PrescribeLabTests(test);
+                    if (Id > 0)
+                    {
+                        return Ok(Id);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+                catch (Exception)
+                {
+                    return BadRequest();
+                }
+            }
+            return BadRequest();
+        }
+        #endregion
+
+        #endregion
 
         #region PRESCRIPTION CODES - WORKING MAIN MODULES
 
@@ -391,7 +396,6 @@ namespace ClinicalManagementSystemNirvana.Controllers
             return BadRequest();
         }
 
-
         //Lab Prescribe WORKING
         [HttpPost]
         [Route("labPresc/{apId}")]
@@ -405,6 +409,34 @@ namespace ClinicalManagementSystemNirvana.Controllers
                     if (id > 0)
                     {
                         return Ok(id);
+                    }
+                    else
+                    {
+                        return NotFound();
+                    }
+                }
+                catch (Exception)
+                {
+                    return BadRequest();
+                }
+            }
+            return BadRequest();
+        }
+
+        //DOCTOR NOTES
+        [HttpPost]
+        [Route("notes")]
+        public async Task<IActionResult> AddDoctorNotes([FromBody] DoctorNotes tests)
+        {
+            //check validation of body
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var Id = await _medlabRepository.AddDoctorNotes(tests);
+                    if (Id > 0)
+                    {
+                        return Ok(Id);
                     }
                     else
                     {
