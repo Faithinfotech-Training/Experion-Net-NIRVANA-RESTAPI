@@ -43,7 +43,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                                      on pre.PrescriptionId equals m.PresccriptionId
                                      join inv in _context.MedicineInventory
                                      on m.MedInvId equals inv.MedInvId
-                                     where p.PatientId == a.PatientId
+                                     where pre.AppointmentId == a.AppointmentId
                                      select inv.MedicineName).ToList(),
                         LabTests = (from lre in _context.LabReport
                                     join t in _context.Tests
