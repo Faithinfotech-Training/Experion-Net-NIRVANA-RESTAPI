@@ -28,10 +28,13 @@ namespace ClinicalManagementSystemNirvana.Repository
                     from a in _context.Appointments
                     from p in _context.Patients
                     from s in _context.Staffs
-                    where a.DoctorId == s.StaffId && a.PatientId == p.PatientId
+                    from d in _context.Doctors
+                    from lr in _context.LabReport
+                    where a.DoctorId == d.DoctorId && d.StaffId == s.StaffId && a.PatientId == p.PatientId && lr.AppointmentId == a.AppointmentId 
                     select new PrescriptionsViewModel
                     {
                         PrescriptionId = a.AppointmentId,
+                        ReportId = lr.ReportId,
                         PrescriptionDate = a.DateOfAppointment,
                         PatientName = p.PatientName,
                         DoctorName = s.StaffName,
@@ -40,7 +43,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                                      on pre.PrescriptionId equals m.PresccriptionId
                                      join inv in _context.MedicineInventory
                                      on m.MedInvId equals inv.MedInvId
-                                     where p.PatientId == pre.PatientId
+                                     where pre.AppointmentId == a.AppointmentId
                                      select inv.MedicineName).ToList(),
                         LabTests = (from lre in _context.LabReport
                                     join t in _context.Tests
@@ -122,6 +125,31 @@ namespace ClinicalManagementSystemNirvana.Repository
         }
         #endregion
 
+        //LabReport and Med Prescriptions - For Prescription
+        #region Prescribe Labtests and Lab Prescriptions
+        public async Task<int> LabReport(LabReport test)
+        {
+            if (_context != null)
+            {
+                await _context.LabReport.AddAsync(test);
+                await _context.SaveChangesAsync();
+                return test.ReportId;
+            }
+            return 0;
+        }
+
+        public async Task<int> MedPrescription(MedPrescriptions test)
+        {
+            if (_context != null)
+            {
+                await _context.MedPrescriptions.AddAsync(test);
+                await _context.SaveChangesAsync();
+                return test.PrescriptionId;
+            }
+            return 0;
+        }
+        #endregion
+
         #region Pharmacist Bill
 
         public async Task<List<PharmacistBillingViewModel>> GetMedBill()
@@ -132,15 +160,16 @@ namespace ClinicalManagementSystemNirvana.Repository
                     from a in _context.MedicineBilling
                     from b in _context.MedPrescriptions
                     from c in _context.Medicines
-                    where a.PrescriptionId == b.PrescriptionId &&
+                    from p in _context.Appointments
+                    where a.PrescriptionId == b.PrescriptionId && b.AppointmentId == p.AppointmentId &&
                     a.MedId == c.MedId
                     select new PharmacistBillingViewModel
                     {
                         Medicine_Bill_Id = a.MedBillId,
                         BillDate = a.BillDate,
                         PrescriptionId = a.PrescriptionId,
-                        PatientId = b.PatientId,
-                        DoctorId = b.DoctorId,
+                        PatientId = p.PatientId,
+                        DoctorId = p.DoctorId,
                         Medicine = (
                                     from ac in _context.Medicines
                                     join ab in _context.MedicineBilling
@@ -154,7 +183,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                                     {
                                         MedicineName = ae.MedicineName,
                                         MedPrice = ac.MedPrice,
-                                        MedQty = ac.MedQty,
+                                        MedQty = (int)ac.MedQty,
                                         Total = (int)(ac.MedQty * ac.MedPrice)
                                     }).ToList()
                        
@@ -168,26 +197,19 @@ namespace ClinicalManagementSystemNirvana.Repository
         #region Medicine Prescription
         public async Task<int> MedPresc(MedicinePrescriptionView mv)
         {
-            MedPrescriptions mp = new MedPrescriptions();
-            mp.PrescriptionDate = mv.PrescriptionDate;
-            mp.PatientId = mv.PatientId;
-            mp.DoctorId = mv.DoctorId;
-
-            await _context.MedPrescriptions.AddAsync(mp);
-            await _context.SaveChangesAsync();
 
             DoctorNotes dn = new DoctorNotes();
             dn.Notes = mv.DoctorNotes;
             dn.DoctorId = mv.DoctorId;
             dn.AppointmentId = mv.AppointmentId;
+
             await _context.DoctorNotes.AddAsync(dn);
             await _context.SaveChangesAsync();
 
             Medicines ms = new Medicines();
-            ms.MedPrice = mv.MedPrice;
             ms.MedQty = mv.MedQty;
             ms.MedDosage = mv.MedDosage;
-            ms.PresccriptionId = mp.PrescriptionId;
+            ms.PresccriptionId = mv.PresccriptionId;
             ms.MedInvId = mv.MedInvId;
 
             await _context.Medicines.AddAsync(ms);
@@ -259,6 +281,61 @@ namespace ClinicalManagementSystemNirvana.Repository
                 _context.Tests.Update(tests);
                 await _context.SaveChangesAsync();
             }
+        }
+
+        public async Task<int> prescribeLab(Tests ts , int apId)
+        {
+            if (_context != null)
+            {
+                var temp = _context.LabReport.Where(x => x.AppointmentId == apId).FirstOrDefault();
+                if (temp == null)
+                {
+                    LabReport lr = new LabReport();
+                    lr.AppointmentId = apId;
+                    lr.ReportDate = DateTime.Now;
+                    await _context.LabReport.AddAsync(lr);
+                    await _context.SaveChangesAsync();
+                }
+                temp = _context.LabReport.Where(x => x.AppointmentId == apId).FirstOrDefault();
+                ts.ReportId = temp.ReportId;
+                await _context.Tests.AddAsync(ts);
+                await _context.SaveChangesAsync();
+                return ts.TestId;
+            }
+            return 0;
+        }
+
+        public async Task<int> prescribeMed(Medicines ms, int apId)
+        {
+            if (_context != null)
+            {
+                var temp = _context.MedPrescriptions.Where(x => x.AppointmentId == apId).FirstOrDefault();
+                if (temp == null)
+                {
+                    MedPrescriptions lr = new MedPrescriptions();
+                    lr.AppointmentId = apId;
+                    lr.PrescriptionDate = DateTime.Now;
+                    await _context.MedPrescriptions.AddAsync(lr);
+                    await _context.SaveChangesAsync();
+                }
+                temp = _context.MedPrescriptions.Where(x => x.AppointmentId == apId).FirstOrDefault();
+                ms.PresccriptionId = temp.PrescriptionId;
+                await _context.Medicines.AddAsync(ms);
+                await _context.SaveChangesAsync();
+                return ms.MedId;
+            }
+            return 0;
+        }
+
+        public async Task<int> AddDoctorNotes(DoctorNotes test)
+        {
+            if (_context != null)
+            {
+                await _context.DoctorNotes.AddAsync(test);
+                await _context.SaveChangesAsync();
+                return test.DoctorNotesId;
+            }
+            return 0;
         }
     }
 }

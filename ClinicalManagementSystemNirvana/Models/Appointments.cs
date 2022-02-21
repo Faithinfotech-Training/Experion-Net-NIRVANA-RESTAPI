@@ -9,6 +9,7 @@ namespace ClinicalManagementSystemNirvana.Models
         {
             DoctorNotes = new HashSet<DoctorNotes>();
             LabReport = new HashSet<LabReport>();
+            MedPrescriptions = new HashSet<MedPrescriptions>();
         }
 
         public int AppointmentId { get; set; }
@@ -23,5 +24,6 @@ namespace ClinicalManagementSystemNirvana.Models
         public virtual Staffs Receptionist { get; set; }
         public virtual ICollection<DoctorNotes> DoctorNotes { get; set; }
         public virtual ICollection<LabReport> LabReport { get; set; }
+        public virtual ICollection<MedPrescriptions> MedPrescriptions { get; set; }
     }
 }

@@ -65,7 +65,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                               from p in _context.Patients
                               from s in _context.Staffs
 
-                              where a.DoctorId == d.DoctorId && d.DoctorId == s.StaffId && p.PatientId == a.PatientId && a.AppointmentId == id
+                              where a.DoctorId == d.DoctorId && d.StaffId == s.StaffId && p.PatientId == a.PatientId && a.AppointmentId == id
                               select new DoctorViewModel
                               {
                                   AppointmentId = a.AppointmentId,

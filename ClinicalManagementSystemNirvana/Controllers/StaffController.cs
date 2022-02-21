@@ -162,6 +162,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
                         token = tokens,
                         Name = user.StaffName,
                         RoleId = user.RoleId,
+                        StaffId = user.StaffId
 
                     });
                     return response;
