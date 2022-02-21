@@ -229,6 +229,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                         PatientName = a.PatientName,
                         PrescriptionId = b.PrescriptionId,
                         PatientId = p.PatientId,
+                        Date = b.PrescriptionDate,
                        
                         DoctorId = p.DoctorId,
                         Medicine = (
@@ -240,9 +241,9 @@ namespace ClinicalManagementSystemNirvana.Repository
                                     select new MedicineViewModel
                                     {
                                         MedicineName = ae.MedicineName,
-                                        MedPrice = ac.MedPrice,
+                                        MedPrice = ae.UnitPrice,
                                         MedQty = (int)ac.MedQty,
-                                        Total = (int)(ac.MedQty * ac.MedPrice)
+                                        Total = (int)(ac.MedQty * ae.UnitPrice)
                                     }).ToList()
                        
                     }).ToListAsync();
@@ -415,6 +416,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                         PatientName = a.PatientName,
                         PrescriptionId = b.PrescriptionId,
                         PatientId = p.PatientId,
+                        Date = b.PrescriptionDate,
 
                         DoctorId = p.DoctorId,
                         Medicine = (
@@ -426,9 +428,9 @@ namespace ClinicalManagementSystemNirvana.Repository
                                     select new MedicineViewModel
                                     {
                                         MedicineName = ae.MedicineName,
-                                        MedPrice = ac.MedPrice,
+                                        MedPrice = ae.UnitPrice,
                                         MedQty = (int)ac.MedQty,
-                                        Total = (int)(ac.MedQty * ac.MedPrice)
+                                        Total = (int)(ac.MedQty * ae.UnitPrice)
                                     }).ToList()
 
                     }).ToListAsync();
