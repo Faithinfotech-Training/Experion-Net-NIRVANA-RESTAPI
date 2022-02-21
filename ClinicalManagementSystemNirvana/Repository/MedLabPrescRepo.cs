@@ -71,7 +71,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                     from s in _context.Staffs
                     from d in _context.Doctors
                     where lr.AppointmentId == a.AppointmentId && a.PatientId == p.PatientId
-                    && a.DoctorId == d.DoctorId && d.DoctorId == s.StaffId && a.DateOfAppointment == DateTime.Today
+                    && a.DoctorId == d.DoctorId && d.StaffId == s.StaffId && a.DateOfAppointment == DateTime.Today
                     select new LabReportView
                     {
                         ReportId = lr.ReportId,

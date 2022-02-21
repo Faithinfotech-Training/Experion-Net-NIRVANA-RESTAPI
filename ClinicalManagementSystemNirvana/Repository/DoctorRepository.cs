@@ -33,8 +33,9 @@ namespace ClinicalManagementSystemNirvana.Repository
                 return await (from a in _context.Appointments
                               from d in _context.Doctors
                               from p in _context.Patients
+                              from s in _context.Staffs
 
-                              where a.DoctorId == d.DoctorId && p.PatientId == a.PatientId && d.DoctorId == id
+                              where s.StaffId == id && s.StaffId==d.StaffId && a.DoctorId == d.DoctorId && p.PatientId == a.PatientId && a.DateOfAppointment==DateTime.Today
                               select new DoctorViewModel
                               {
                                   AppointmentId = a.AppointmentId,
