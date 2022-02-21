@@ -188,7 +188,52 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #endregion
 
+        //get lab report by report id
+        #region Get report by report Id
 
+        [HttpGet]
+        [Route("labreport/{id}")]
+        public async Task<IActionResult> GetLabReportById(int id)
+        {
+            try
+            {
+                var report = await _medlabRepository.GetLabReportById(id);
+
+                if (report == null)
+                {
+                    return NotFound();
+                }
+                return Ok(report);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        #endregion
+
+
+        #region Update labtest result 
+        [HttpPut]
+        [Route("result")]
+        public async Task<IActionResult> UpdateResult([FromBody] Tests test)
+        {
+            //check validation of body
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    await _medlabRepository.UpdateResult(test);
+                    return Ok();
+                }
+                catch (Exception)
+                {
+                    return BadRequest();
+                }
+            }
+            return BadRequest();
+        }
+        #endregion
 
         //MAIN MODULES FOR PRESCRIPTION
 

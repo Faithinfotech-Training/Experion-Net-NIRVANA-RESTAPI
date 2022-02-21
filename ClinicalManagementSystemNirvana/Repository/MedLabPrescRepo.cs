@@ -30,8 +30,8 @@ namespace ClinicalManagementSystemNirvana.Repository
                     from s in _context.Staffs
                     from d in _context.Doctors
                     from lr in _context.LabReport
-                    where a.DoctorId == d.DoctorId && d.StaffId == s.StaffId && a.PatientId == p.PatientId && lr.AppointmentId == a.AppointmentId 
-                    select new PrescriptionsViewModel
+                    where a.DoctorId == d.DoctorId && d.StaffId == s.StaffId && a.PatientId == p.PatientId && lr.AppointmentId == a.AppointmentId && a.DateOfAppointment == DateTime.Today
+                    select new PrescriptionsViewModel 
                     {
                         PrescriptionId = a.AppointmentId,
                         ReportId = lr.ReportId,
@@ -71,7 +71,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                     from s in _context.Staffs
                     from d in _context.Doctors
                     where lr.AppointmentId == a.AppointmentId && a.PatientId == p.PatientId
-                    && a.DoctorId == d.DoctorId && d.DoctorId == s.StaffId
+                    && a.DoctorId == d.DoctorId && d.DoctorId == s.StaffId && a.DateOfAppointment == DateTime.Today
                     select new LabReportView
                     {
                         ReportId = lr.ReportId,
@@ -149,6 +149,66 @@ namespace ClinicalManagementSystemNirvana.Repository
             return 0;
         }
         #endregion
+
+
+
+        //get lab report by id
+        #region get lab report by id
+        public async Task<List<LabReportView>> GetLabReportById(int id)
+        {
+            if (_context != null)
+            {
+                return await (
+                    from a in _context.Appointments
+                    from lr in _context.LabReport
+                    from p in _context.Patients
+                    from s in _context.Staffs
+                    from d in _context.Doctors
+                    where lr.AppointmentId == a.AppointmentId && a.PatientId == p.PatientId
+                    && a.DoctorId == d.DoctorId && d.DoctorId == s.StaffId && lr.ReportId == id
+                    select new LabReportView
+                    {
+                        ReportId = lr.ReportId,
+                        AppointmentId = a.AppointmentId,
+                        ReportDate = a.DateOfAppointment,
+                        Doctor = s.StaffName,
+                        Patient = p.PatientName,
+                        BloodGroup = p.BloodGroup,
+                        PhnNo = p.PatientPhoneNo,
+                        Tests = (from ts in _context.Tests
+                                 join lb in _context.LabTests
+                                 on ts.LabTestId equals lb.LabTestId
+                                 where lr.ReportId == ts.ReportId
+                                 select new TestView
+                                 {
+                                     TestId = ts.TestId,
+                                     TestName = lb.TestName,
+                                     Result = ts.TestResValue
+                                 }).ToList()
+                    }).ToListAsync();
+            }
+            return null;
+
+
+        }
+        #endregion
+
+        //update labtest result
+        public async Task UpdateResult(Tests test)
+        {
+
+            if (_context != null)
+            {
+                _context.Entry(test).State = EntityState.Modified;
+                _context.Tests.Update(test);
+                await _context.SaveChangesAsync(); //Commit the transaction
+            }
+        }
+
+
+
+
+
 
         #region Pharmacist Bill
 
@@ -292,7 +352,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                 {
                     LabReport lr = new LabReport();
                     lr.AppointmentId = apId;
-                    lr.ReportDate = DateTime.Now;
+                    lr.ReportDate = DateTime.Today;
                     await _context.LabReport.AddAsync(lr);
                     await _context.SaveChangesAsync();
                 }
@@ -314,7 +374,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                 {
                     MedPrescriptions lr = new MedPrescriptions();
                     lr.AppointmentId = apId;
-                    lr.PrescriptionDate = DateTime.Now;
+                    lr.PrescriptionDate = DateTime.Today;
                     await _context.MedPrescriptions.AddAsync(lr);
                     await _context.SaveChangesAsync();
                 }
