@@ -10,11 +10,11 @@
         "projectUniqueName": "E:\\Experion-Net-NIRVANA-RESTAPI\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj",
         "projectName": "ClinicalManagementSystemNirvana",
         "projectPath": "E:\\Experion-Net-NIRVANA-RESTAPI\\ClinicalManagementSystemNirvana\\ClinicalManagementSystemNirvana.csproj",
-        "packagesPath": "C:\\Users\\bidhu.m\\.nuget\\packages\\",
+        "packagesPath": "C:\\Users\\abhinav.jaiju\\.nuget\\packages\\",
         "outputPath": "E:\\Experion-Net-NIRVANA-RESTAPI\\ClinicalManagementSystemNirvana\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\bidhu.m\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\abhinav.jaiju\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

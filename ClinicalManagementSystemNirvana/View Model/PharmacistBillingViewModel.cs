@@ -7,8 +7,8 @@ namespace ClinicalManagementSystemNirvana.View_Model
 {
     public class PharmacistBillingViewModel
     {
-        public int Medicine_Bill_Id { get; set; }
-        public DateTime? BillDate { get; set; }
+        public string PatientName { get; set; }
+        public DateTime? Date { get; set; }
         public int? PrescriptionId { get; set; }
         public int? PatientId { get; set; }
         public int? DoctorId { get; set; }
