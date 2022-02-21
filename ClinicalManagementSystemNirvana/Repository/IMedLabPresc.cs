@@ -36,6 +36,12 @@ namespace ClinicalManagementSystemNirvana.Repository
 
         Task<List<LabReportView>> labReport();
 
+
+        Task<List<LabReportView>> GetLabReportById(int id);
+
+        //update test result
+        Task UpdateResult(Tests test);
+
         //MEDICINE PRESCRIPTION
         Task<int> MedPresc(MedicinePrescriptionView mv);
         Task<int> MedPrescription(MedPrescriptions test);
