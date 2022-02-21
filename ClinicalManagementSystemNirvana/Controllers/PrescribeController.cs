@@ -497,5 +497,27 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
 
         #endregion
+
+        #region GET MED BILL BY ID
+        [HttpGet]
+        [Route("medbill/{id}")]
+        public async Task<IActionResult> GetMedBillById(int id)
+        {
+            try
+            {
+                var report = await _medlabRepository.GetMedBillById(id);
+
+                if (report == null)
+                {
+                    return NotFound();
+                }
+                return Ok(report);
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+        }
+        #endregion
     }
 }

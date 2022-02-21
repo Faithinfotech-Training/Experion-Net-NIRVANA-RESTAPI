@@ -397,5 +397,49 @@ namespace ClinicalManagementSystemNirvana.Repository
             }
             return 0;
         }
+
+        #region GetMedBillById
+
+        public async Task<List<PharmacistBillingViewModel>> GetMedBillById(int id)
+        {
+            if (_context != null)
+            {
+                return await (
+                    from a in _context.Patients
+                    from b in _context.MedPrescriptions
+                    from c in _context.Medicines
+                    from p in _context.Appointments
+                    where p.PatientId == a.PatientId && b.AppointmentId == p.AppointmentId &&
+                    b.PrescriptionId == c.PresccriptionId && b.PrescriptionDate == DateTime.Today
+                    && b.PrescriptionId == id
+
+
+                    select new PharmacistBillingViewModel
+                    {
+                        PatientName = a.PatientName,
+                        PrescriptionId = b.PrescriptionId,
+                        PatientId = p.PatientId,
+
+                        DoctorId = p.DoctorId,
+                        Medicine = (
+                                    from ac in _context.Medicines
+                                    join ad in _context.MedPrescriptions
+                                    on ac.PresccriptionId equals ad.PrescriptionId
+                                    join ae in _context.MedicineInventory
+                                    on ac.MedInvId equals ae.MedInvId
+                                    where ac.PresccriptionId == b.PrescriptionId
+                                    select new MedicineViewModel
+                                    {
+                                        MedicineName = ae.MedicineName,
+                                        MedPrice = ac.MedPrice,
+                                        MedQty = (int)ac.MedQty,
+                                        Total = (int)(ac.MedQty * ac.MedPrice)
+                                    }).ToList()
+
+                    }).ToListAsync();
+            }
+            return null;
+        }
+        #endregion
     }
 }

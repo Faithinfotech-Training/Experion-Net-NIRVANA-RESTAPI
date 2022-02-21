@@ -21,6 +21,8 @@ namespace ClinicalManagementSystemNirvana.Repository
 
         Task<List<PharmacistBillingViewModel>> GetMedBill();
 
+        Task<List<PharmacistBillingViewModel>> GetMedBillById(int id);
+
         //labtest put
         Task UpdateLabTest(Tests tests);
 
