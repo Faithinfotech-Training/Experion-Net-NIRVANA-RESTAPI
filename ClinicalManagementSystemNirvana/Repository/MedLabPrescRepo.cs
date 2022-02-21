@@ -229,7 +229,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                         PatientName = a.PatientName,
                         PrescriptionId = b.PrescriptionId,
                         PatientId = p.PatientId,
-                       
+                        Date=b.PrescriptionDate,
                         DoctorId = p.DoctorId,
                         Medicine = (
                                     from ac in _context.Medicines
@@ -240,9 +240,9 @@ namespace ClinicalManagementSystemNirvana.Repository
                                     select new MedicineViewModel
                                     {
                                         MedicineName = ae.MedicineName,
-                                        MedPrice = ac.MedPrice,
+                                        MedPrice = ae.UnitPrice,
                                         MedQty = (int)ac.MedQty,
-                                        Total = (int)(ac.MedQty * ac.MedPrice)
+                                        Total = (int)(ac.MedQty * ae.UnitPrice)
                                     }).ToList()
                        
                     }).ToListAsync();
@@ -405,7 +405,6 @@ namespace ClinicalManagementSystemNirvana.Repository
                 return await (
                     from a in _context.Patients
                     from b in _context.MedPrescriptions
-
                     from p in _context.Appointments
                     where p.PatientId == a.PatientId && b.AppointmentId == p.AppointmentId && b.PrescriptionDate == DateTime.Today
 
@@ -415,7 +414,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                         PatientName = a.PatientName,
                         PrescriptionId = b.PrescriptionId,
                         PatientId = p.PatientId,
-
+                        Date=b.PrescriptionDate,
                         DoctorId = p.DoctorId,
                         Medicine = (
                                     from ac in _context.Medicines
@@ -426,9 +425,9 @@ namespace ClinicalManagementSystemNirvana.Repository
                                     select new MedicineViewModel
                                     {
                                         MedicineName = ae.MedicineName,
-                                        MedPrice = ac.MedPrice,
+                                        MedPrice = ae.UnitPrice,
                                         MedQty = (int)ac.MedQty,
-                                        Total = (int)(ac.MedQty * ac.MedPrice)
+                                        Total = (int)(ac.MedQty * ae.UnitPrice)
                                     }).ToList()
 
                     }).ToListAsync();
