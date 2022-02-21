@@ -219,10 +219,9 @@ namespace ClinicalManagementSystemNirvana.Repository
                 return await (
                     from a in _context.Patients
                     from b in _context.MedPrescriptions
-                    from c in _context.Medicines
+                    
                     from p in _context.Appointments
-                    where p.PatientId==a.PatientId && b.AppointmentId == p.AppointmentId &&
-                    b.PrescriptionId == c.PresccriptionId && b.PrescriptionDate == DateTime.Today
+                    where p.PatientId==a.PatientId && b.AppointmentId == p.AppointmentId && b.PrescriptionDate == DateTime.Today
                     
 
                     select new PharmacistBillingViewModel
@@ -234,8 +233,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                         DoctorId = p.DoctorId,
                         Medicine = (
                                     from ac in _context.Medicines
-                                    join ad in _context.MedPrescriptions
-                                    on ac.PresccriptionId equals ad.PrescriptionId
+     
                                     join ae in _context.MedicineInventory
                                     on ac.MedInvId equals ae.MedInvId
                                     where ac.PresccriptionId == b.PrescriptionId
@@ -407,11 +405,9 @@ namespace ClinicalManagementSystemNirvana.Repository
                 return await (
                     from a in _context.Patients
                     from b in _context.MedPrescriptions
-                    from c in _context.Medicines
+
                     from p in _context.Appointments
-                    where p.PatientId == a.PatientId && b.AppointmentId == p.AppointmentId &&
-                    b.PrescriptionId == c.PresccriptionId && b.PrescriptionDate == DateTime.Today
-                    && b.PrescriptionId == id
+                    where p.PatientId == a.PatientId && b.AppointmentId == p.AppointmentId && b.PrescriptionDate == DateTime.Today
 
 
                     select new PharmacistBillingViewModel
@@ -423,8 +419,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                         DoctorId = p.DoctorId,
                         Medicine = (
                                     from ac in _context.Medicines
-                                    join ad in _context.MedPrescriptions
-                                    on ac.PresccriptionId equals ad.PrescriptionId
+
                                     join ae in _context.MedicineInventory
                                     on ac.MedInvId equals ae.MedInvId
                                     where ac.PresccriptionId == b.PrescriptionId
