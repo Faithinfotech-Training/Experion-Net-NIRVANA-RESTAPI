@@ -1,5 +1,6 @@
 ﻿using ClinicalManagementSystemNirvana.Models;
 using ClinicalManagementSystemNirvana.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -25,6 +26,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         #region getallmedicines
         [HttpGet]
         [Route("get")]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<MedicineInventory>>> GetAllMedicines()
         {
             return await _inventoryRepository.GetAllMedicines();
@@ -35,6 +37,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         #region Add Medicines
         [HttpPost]
         [Route("medicine")]
+        [Authorize]
         public async Task<IActionResult> AddMedicine([FromBody] MedicineInventory medInventory)
         {
             //check validation of body
@@ -65,6 +68,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         #region Update Medicine 
         [HttpPut]
         [Route("medicine")]
+        [Authorize]
         public async Task<IActionResult> UpdateMedicine([FromBody] MedicineInventory medInv)
         {
             //check validation of body
@@ -87,6 +91,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
 
         #region Find Medicine
         [HttpGet("medicine/{id}")]
+        [Authorize]
         public async Task<ActionResult<MedicineInventory>> GetMedicineId(int id)
         {
             try
@@ -108,6 +113,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
 
         #region Delete Medicine
         [HttpDelete("medicine/{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteMedicine(int? id)
         {
             int result = 0;

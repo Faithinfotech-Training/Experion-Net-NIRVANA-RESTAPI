@@ -1,6 +1,7 @@
 ﻿using ClinicalManagementSystemNirvana.Models;
 using ClinicalManagementSystemNirvana.Repository;
 using ClinicalManagementSystemNirvana.View_Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -26,6 +27,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         #region Get All Prescriptions
         [HttpGet]
         [Route("GetPrescriptions")]
+        [Authorize]
         public async Task<IActionResult> GetPrescription()
         {
             try
@@ -51,6 +53,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         #region Get LAB REPORT
         [HttpGet]
         [Route("labreport")]
+        [Authorize]
         public async Task<IActionResult> LabReport()
         {
             try
@@ -75,6 +78,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         #region Pharmacy Billing
         [HttpGet]
         [Route("GetMedBill")]
+        [Authorize]
         public async Task<IActionResult> GetPharmacyBilling()
         {
             try
@@ -98,6 +102,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
 
         #region update lab Test
         [HttpPut]
+        [Authorize]
         public async Task<IActionResult> UpdateLabTest([FromBody] Tests tests)
         {
             //check validation of body
@@ -417,6 +422,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         //Medicine Prescribe WORKING
         [HttpPost]
         [Route("medPresc/{apId}")]
+        [Authorize]
         public async Task<IActionResult> prescribeMed([FromBody] Medicines mpv , int apId)
         {
             if (ModelState.IsValid)
@@ -444,6 +450,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         //Lab Prescribe WORKING
         [HttpPost]
         [Route("labPresc/{apId}")]
+        [Authorize]
         public async Task<IActionResult> prescribeLab([FromBody] Tests mpv, int apId)
         {
             if (ModelState.IsValid)
@@ -471,6 +478,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         //DOCTOR NOTES
         [HttpPost]
         [Route("notes")]
+        [Authorize]
         public async Task<IActionResult> AddDoctorNotes([FromBody] DoctorNotes tests)
         {
             //check validation of body
@@ -501,6 +509,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         #region GET MED BILL BY ID
         [HttpGet]
         [Route("medbill/{id}")]
+        [Authorize]
         public async Task<IActionResult> GetMedBillById(int id)
         {
             try

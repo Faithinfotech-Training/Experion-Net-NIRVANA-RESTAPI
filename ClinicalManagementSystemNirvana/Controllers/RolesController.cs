@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ClinicalManagementSystemNirvana.Models;
 using ClinicalManagementSystemNirvana.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,6 +24,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #region Get All Department
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Roles>>> GetDepartmentALL()
         {
             return await _roleRepository.GetAllRoles();
@@ -32,6 +34,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         #region Add Department
         [HttpPost]
         [Route("adddepartment")]
+        [Authorize]
         public async Task<IActionResult> AddUser([FromBody] Roles role)
         {
             //check the validation of body
@@ -65,6 +68,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         #region UpdateRole
         [HttpPut]
         [Route("updatedepartment")]
+        [Authorize]
         public async Task<IActionResult> UpdateRole([FromBody] Roles role)
         {
             //check the validation of body
@@ -91,6 +95,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
 
         #region Find Role By Id
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<Roles>> GetRoleId(int id)
         {
             try
