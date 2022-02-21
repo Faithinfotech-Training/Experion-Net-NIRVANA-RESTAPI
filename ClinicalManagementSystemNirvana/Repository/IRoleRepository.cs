@@ -9,5 +9,15 @@ namespace ClinicalManagementSystemNirvana.Repository
     public interface IRoleRepository
     {
         Task<List<Roles>> GetAllRoles();
+
+        //add roles
+        Task<int> AddRole(Roles roles);
+
+        //update Role
+        Task UpdateRole(Roles roles);
+
+        //get role by Id 
+        Task<Roles> GetRoleById(int roleId);
+
     }
 }

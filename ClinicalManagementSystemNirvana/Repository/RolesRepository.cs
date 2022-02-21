@@ -15,6 +15,18 @@ namespace ClinicalManagementSystemNirvana.Repository
         {
             _context = context;
         }
+
+        public async Task<int> AddRole(Roles roles)
+        {
+            if (_context != null)
+            {
+                await _context.Roles.AddAsync(roles);
+                await _context.SaveChangesAsync();
+                return roles.RoleId;
+            }
+            return 0;
+        }
+
         public async Task<List<Roles>> GetAllRoles()
         {
             if (_context != null)
@@ -22,6 +34,28 @@ namespace ClinicalManagementSystemNirvana.Repository
                 return await _context.Roles.ToListAsync();
             }
             return null;
+        }
+
+        public async Task<Roles> GetRoleById(int roleId)
+        {
+            if (_context != null)
+            {
+                var staff = await _context.Roles.FindAsync(roleId);// concentrating on primary key
+                return staff;
+            }
+            return null;
+        }
+
+        //UpdateRole
+        public async Task UpdateRole(Roles roles)
+        {
+            if (_context != null)
+            {
+                _context.Entry(roles).State = EntityState.Modified;
+                _context.Roles.Update(roles);
+
+                await _context.SaveChangesAsync();
+            }
         }
     }
 }
