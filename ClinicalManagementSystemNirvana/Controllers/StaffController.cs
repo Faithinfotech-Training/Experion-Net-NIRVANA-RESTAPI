@@ -30,6 +30,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         }
         #region Get All Staff
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Staffs>>> GetStaffs()
         {
             return await _staffRepository.GetAllstaff();
@@ -39,6 +40,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         #region Add staff
         [HttpPost]
         [Route("addstaff")]
+        [Authorize]
         public async Task<IActionResult> AddStaff([FromBody] Staffs staffs)
         {
             //check validation of body
@@ -67,6 +69,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
 
         #region Update STaff
         [HttpPut]
+        [Authorize]
         public async Task<IActionResult> UpdateStaff([FromBody] Staffs staffs)
         {
             //check validation of body
@@ -88,6 +91,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
 
         #region Find Staff
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<Staffs>> GetStaffId(int id)
         {
             try
@@ -108,6 +112,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
 
         #region Delete Staff
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteStaff(int? id)
         {
             int result = 0;
@@ -137,8 +142,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         #region  Get Staff By Username Password 
         [HttpGet("login/{un}&{pw}")]
         [AllowAnonymous]
-        
-
+        [Authorize]
         public async Task<IActionResult> GetStaffByUsernamePassword(string un, string pw)
         {
             var securitykey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));
@@ -181,6 +185,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         #region GetAll Post ViewModel
         [HttpGet]
         [Route("GetStaffsAll")]
+        [Authorize]
         public async Task<IActionResult> GetAllStaff()
         {
             try

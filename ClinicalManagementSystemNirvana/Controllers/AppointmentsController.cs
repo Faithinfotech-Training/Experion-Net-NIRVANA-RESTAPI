@@ -1,5 +1,6 @@
 ﻿using ClinicalManagementSystemNirvana.Models;
 using ClinicalManagementSystemNirvana.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -25,6 +26,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         #region getallappointments
         [HttpGet]
         [Route("getallappointments")]
+        [Authorize]
         public async Task<IActionResult> GetAllAppointments()
         {
             try
@@ -48,6 +50,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         //api/appointments/doctor
         [HttpGet]
         [Route("get")]
+        [Authorize]
         public async Task<IActionResult> GetAllDoctorAndAppointments()
         {
             try
@@ -69,6 +72,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         
         #region add patient
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddAppointment([FromBody] Appointments appointments)
         {
             if (ModelState.IsValid)
@@ -116,6 +120,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
 
         #region Get All appiontment
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Appointments>>> GetAppointments()
         {
             return await _appointmentRepository.GetAppointments();
@@ -124,6 +129,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
 
         #region get by id
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<Appointments>> GetAppointmentById(int? id)
         {
             try

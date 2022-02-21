@@ -1,5 +1,6 @@
 ﻿using ClinicalManagementSystemNirvana.Repository;
 using ClinicalManagementSystemNirvana.View_Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -29,6 +30,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         //api/appointments/doctor
         [HttpGet]
         [Route("appointments/{id}")]
+        [Authorize]
         public async Task<IActionResult> GetAllDoctorAndTokens(int id)
         {
             try
@@ -52,6 +54,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         #region Appointment by ID
         [HttpGet]
         [Route("appointment/{id}")]
+        [Authorize]
         public async Task<IActionResult> GetAppById(int id)
         {
             try
@@ -74,6 +77,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         #region getdoctorList
         [HttpGet]
         [Route("doctors")]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<DoctorListViewModel>>> GetDoctorList()
         {
             return await _doctorRepository.GetDoctorList();

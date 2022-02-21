@@ -1,5 +1,6 @@
 ﻿using ClinicalManagementSystemNirvana.Models;
 using ClinicalManagementSystemNirvana.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -26,6 +27,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         #region Get All  Labtests
         [HttpGet]
         [Route("getalllabtests")]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<LabTests>>> GetAllLabTests()
         {
             return await _inventory.GetAllLabTests();
@@ -37,6 +39,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         
         [HttpPost]
         [Route("labtest")]
+        [Authorize]
         public async Task<IActionResult> AddLabTests([FromBody] LabTests labInv)
         {
             //check validation of body
@@ -68,6 +71,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         
         [HttpPut]
         [Route("labtest")]
+        [Authorize]
         public async Task<IActionResult> UpdateLabTests([FromBody] LabTests labInv)
         {
             //check validation of body
@@ -90,7 +94,8 @@ namespace ClinicalManagementSystemNirvana.Controllers
         //Find Labtests
         #region Find  LabTests
         
-      [HttpGet("labtest/{id}")]
+        [HttpGet("labtest/{id}")]
+        [Authorize]
         public async Task<ActionResult<LabTests>> GetLabTestsById(int id)
         {
             try
@@ -113,6 +118,7 @@ namespace ClinicalManagementSystemNirvana.Controllers
         #region Delete Labtests
        
         [HttpDelete("labtest/{id}")]
+        [Authorize]
         public async Task<IActionResult> DeleteLabTests(int? id)
         {
             int result = 0;

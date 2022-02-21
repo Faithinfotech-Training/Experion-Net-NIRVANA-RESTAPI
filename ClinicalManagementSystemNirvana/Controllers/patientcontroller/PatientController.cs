@@ -1,5 +1,6 @@
 ﻿using ClinicalManagementSystemNirvana.Models;
 using ClinicalManagementSystemNirvana.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -16,8 +17,11 @@ namespace ClinicalManagementSystemNirvana.Controllers
         {
             _patient = patient;
         }
+
+
         #region add patient
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> AddPatient([FromBody] Patients patients)
         {
             if (ModelState.IsValid)
@@ -42,14 +46,21 @@ namespace ClinicalManagementSystemNirvana.Controllers
             return BadRequest();
         }
         #endregion
+
+
         #region Get All patient
         [HttpGet]
+        [Authorize]
         public async Task<ActionResult<IEnumerable<Patients>>> GetAllPatient()
         {
             return await _patient.GetAllPatient();
         }
         #endregion
+
+
         #region updatepatient
+        [HttpPut]
+        [Authorize]
         public async Task<IActionResult> UpdatePatient([FromBody] Patients patients)
         {
             //check the validation of body
@@ -68,8 +79,11 @@ namespace ClinicalManagementSystemNirvana.Controllers
             return BadRequest();
         }
         #endregion
+
+
         #region delete
         [HttpDelete("{id}")]
+        [Authorize]
         public async Task<IActionResult> DeletePatient(int? id)
         {
             int result = 0;
@@ -93,8 +107,11 @@ namespace ClinicalManagementSystemNirvana.Controllers
             }
         }
         #endregion
+
+
         #region get by id
         [HttpGet("{id}")]
+        [Authorize]
         public async Task<ActionResult<Patients>> GetPatientById(int? id)
         {
             try
