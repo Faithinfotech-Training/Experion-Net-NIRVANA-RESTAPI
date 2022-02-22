@@ -53,7 +53,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                               from d in _context.Doctors
                               from p in _context.Patients
                               from s in _context.Staffs 
-                              where a.DoctorId == d.DoctorId && d.StaffId==s.StaffId  && a.PatientId==p.PatientId
+                              where a.DoctorId == d.DoctorId && d.StaffId==s.StaffId  && a.PatientId==p.PatientId && a.DateOfAppointment==DateTime.Today
                               select new Appointmentviewmodel 
                               {
                                   AppointmentId = a.AppointmentId,
