@@ -30,7 +30,8 @@ namespace ClinicalManagementSystemNirvana.Repository
                     from s in _context.Staffs
                     from d in _context.Doctors
                     from lr in _context.LabReport
-                    where a.DoctorId == d.DoctorId && d.StaffId == s.StaffId && a.PatientId == p.PatientId && lr.AppointmentId == a.AppointmentId && a.DateOfAppointment == DateTime.Today
+                    where a.DoctorId == d.DoctorId && d.StaffId == s.StaffId && a.PatientId == p.PatientId 
+                    && lr.AppointmentId == a.AppointmentId && a.DateOfAppointment == DateTime.Today
                     select new PrescriptionsViewModel 
                     {
                         PrescriptionId = a.AppointmentId,
@@ -51,7 +52,10 @@ namespace ClinicalManagementSystemNirvana.Repository
                                     join inv in _context.LabTests
                                     on t.LabTestId equals inv.LabTestId
                                     where lre.AppointmentId == a.AppointmentId
-                                    select inv.TestName).ToList()
+                                    select inv.TestName).ToList(),
+                        Notes = (from n in _context.DoctorNotes
+                                where n.AppointmentId == a.AppointmentId
+                                select n.Notes).FirstOrDefault()
                     }).ToListAsync();
             }
             return null;
@@ -165,7 +169,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                     from s in _context.Staffs
                     from d in _context.Doctors
                     where lr.AppointmentId == a.AppointmentId && a.PatientId == p.PatientId
-                    && a.DoctorId == d.DoctorId && d.DoctorId == s.StaffId && lr.ReportId == id
+                    && a.DoctorId == d.DoctorId && d.StaffId == s.StaffId && lr.ReportId == id
                     select new LabReportView
                     {
                         ReportId = lr.ReportId,
