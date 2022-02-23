@@ -14,7 +14,7 @@ namespace ClinicalManagementSystemNirvana.View_Model
         public string DoctorName { get; set; }
         public List<string> Medicines { get; set; }
         public List<string> LabTests { get; set; }
-        public string Notes { get; set; }
+        public List<string> Notes { get; set; }
 
         public override string ToString()
         {

@@ -55,7 +55,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                                     select inv.TestName).ToList(),
                         Notes = (from n in _context.DoctorNotes
                                 where n.AppointmentId == a.AppointmentId
-                                select n.Notes).FirstOrDefault()
+                                select n.Notes).ToList()
                     }).ToListAsync();
             }
             return null;
@@ -394,6 +394,7 @@ namespace ClinicalManagementSystemNirvana.Repository
         {
             if (_context != null)
             {
+
                 await _context.DoctorNotes.AddAsync(test);
                 await _context.SaveChangesAsync();
                 return test.DoctorNotesId;
@@ -410,9 +411,12 @@ namespace ClinicalManagementSystemNirvana.Repository
                 return await (
                     from a in _context.Patients
                     from b in _context.MedPrescriptions
-
+                    from s in _context.Staffs
+                    from d in _context.Doctors
                     from p in _context.Appointments
-                    where p.PatientId == a.PatientId && b.AppointmentId == p.AppointmentId && b.PrescriptionDate == DateTime.Today
+                    where p.PatientId == a.PatientId && b.AppointmentId == p.AppointmentId 
+                    && p.DoctorId == d.DoctorId && d.StaffId == s.StaffId 
+                    && b.PrescriptionDate == DateTime.Today
 
 
                     select new PharmacistBillingViewModel
@@ -421,7 +425,7 @@ namespace ClinicalManagementSystemNirvana.Repository
                         PrescriptionId = b.PrescriptionId,
                         PatientId = p.PatientId,
                         Date = b.PrescriptionDate,
-
+                        DoctorName=s.StaffName,
                         DoctorId = p.DoctorId,
                         Medicine = (
                                     from ac in _context.Medicines
